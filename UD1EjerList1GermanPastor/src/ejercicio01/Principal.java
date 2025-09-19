@@ -9,28 +9,26 @@ public class Principal {
 
 		Scanner sc = new Scanner(System.in);
 
-		int nuevaContrasena;
-		int intentos = 0;
-		int contrasena;
+        int contrasena=1234;
+        int intentos=0;
+        int codigo;
 
-		System.out.println("Introduce la contraseña que le quieres poner a la caja");
-		nuevaContrasena = Integer.parseInt(sc.nextLine());
-		do {
-			System.out.println("Introduce la contraseña para sacar la llave de la casa");
-			contrasena = Integer.parseInt(sc.nextLine());
-			 if(contrasena != nuevaContrasena) {
-				intentos++;
-				System.out.println("Contraseña incorrecta");
-			}
-		} while (contrasena != nuevaContrasena || intentos <=5);
+        do {
+            System.out.println("Introduce la contraseña para sacar las llaves");
+            codigo = Integer.parseInt(sc.nextLine());
+            if (codigo != contrasena) {
+                intentos++;
+                System.out.println("Contraseña Incorrecta");
+            }else{
+                System.out.println("Aqui tienes tus llaves");
+            }
+        }while(codigo!=contrasena && intentos<3);
 
-		if (contrasena == nuevaContrasena) {
-			System.out.println("Aqui tienes sus llaves");
-			
-		}
-		if (intentos <=5) {
-			System.out.println("Ya lo has intentado muchas veces");
-		}
+        if(intentos>2){
+            System.out.println("Ya lo has intentado muchas veces");
+        }
+
+
 
 	}
 

@@ -9,6 +9,8 @@ public class Principal {
 
         int []numero=new int [10];
         Dado d = new Dado(numero);
-        System.out.println((Arrays.toString(d.generarAleatorio())));
+        System.out.println(("Estos son los 10 números aleatorios "+Arrays.toString(d.generarAleatorio())));
+        System.out.println("El numero más grande de los generados es "+d.numeroMayor());
+        System.out.println("El número mas chico de los generados es "+d.numeroMenor());
     }
 }

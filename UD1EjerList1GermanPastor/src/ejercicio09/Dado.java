@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Dado {
 
-    private int[] numero = new int [10];
+    private int[] numero = new int[10];
 
     public Dado(int[] numero) {
         this.numero = numero;
@@ -26,12 +26,34 @@ public class Dado {
                 '}';
     }
 
-    public int[] generarAleatorio(){
+    public int[] generarAleatorio() {
         int min = 1, max = 6;
         Random rnd = new Random(System.nanoTime());
-        for(int i=0;i<numero.length;i++){
-            numero[i] = rnd.nextInt(max-min+1)+min;
+        for (int i = 0; i < numero.length; i++) {
+            numero[i] = rnd.nextInt(max - min + 1) + min;
         }
         return numero;
     }
+
+    public int numeroMayor() {
+        int mayor = numero[0];
+        for (int i = 0; i < numero.length; i++) {
+            if (mayor < numero[i]) {
+                mayor = numero[i];
+            }
+        }
+        return mayor;
+    }
+
+    public int numeroMenor(){
+        int menor = numero[0];
+        for (int i = 0; i < numero.length; i++) {
+            if (menor>numero[i]) {
+                menor= numero[i];
+            }
+        }
+        return menor;
+    }
+
+
 }

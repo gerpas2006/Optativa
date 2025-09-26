@@ -28,7 +28,7 @@ public class Principal {
         }
         p = new Plataforma(anuncios,descuento,nombre,precio);
         g = new Gestion(p);
-        System.out.println(g.calcularPrecio(descuento,anuncios));
+        System.out.println("El precio de la plataforma se te queda en "+g.calcularPrecio(descuento,anuncios)+"€");
 
     }
 }

@@ -55,5 +55,26 @@ public class Dado {
         return menor;
     }
 
+    public int numeroMasRepetido() {
+        generarAleatorio();
+        int numeroRepetido = numero[0];
+        int maxFrecuencia = 0;
+
+        for (int i = 0; i < numero.length; i++) {
+            int contador = 0;
+            for (int j = 0; j < numero.length; j++) {
+                if (numero[i] == numero[j]) {
+                    contador++;
+                }
+            }
+
+            if (contador > maxFrecuencia) {
+                maxFrecuencia = contador;
+                numeroRepetido = numero[i];
+            }
+        }
+
+        return numeroRepetido;
+    }
 
 }

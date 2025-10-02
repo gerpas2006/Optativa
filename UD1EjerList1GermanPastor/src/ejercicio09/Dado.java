@@ -7,75 +7,84 @@ import java.util.Random;
 
 public class Dado {
 
-    private int[] numero = new int[10];
+    private List<Integer> listNum=new ArrayList<>();
 
-    public Dado(int[] numero) {
-        this.numero = numero;
+
+    public Dado(List<Integer> listNum) {
+        this.listNum = listNum;
     }
 
-    public int[] getNumero() {
-        return numero;
+    public List<Integer> getListNum() {
+        return listNum;
     }
 
-    public void setNumero(int[] numero) {
-        this.numero = numero;
+    public void setListNum(List<Integer> listNum) {
+        this.listNum = listNum;
     }
 
     @Override
     public String toString() {
         return "Dado{" +
-                "numero=" + Arrays.toString(numero) +
+                "listNum=" + listNum +
                 '}';
     }
 
-    public int[] generarAleatorio() {
-        int min = 1, max = 6;
+    public List<Integer> numAleatorio(int min,int max){
         Random rnd = new Random(System.nanoTime());
-        for (int i = 0; i < numero.length; i++) {
-            numero[i] = rnd.nextInt(max - min + 1) + min;
+        for (int i = 0; i < 10; i++) {
+            listNum.add(rnd.nextInt(max - min + 1) + min);
         }
-        return numero;
+        return listNum;
     }
 
-    public int numeroMayor() {
-        int mayor = numero[0];
-        for (int i = 0; i < numero.length; i++) {
-            if (mayor < numero[i]) {
-                mayor = numero[i];
+    public int numMayor(){
+        int mayor= listNum.getFirst();
+        for (int i = 0; i < listNum.size(); i++) {
+            if(listNum.get(i)>mayor){
+                mayor=listNum.get(i);
             }
         }
         return mayor;
     }
 
-    public int numeroMenor(){
-        int menor = numero[0];
-        for (int i = 0; i < numero.length; i++) {
-            if (menor>numero[i]) {
-                menor= numero[i];
+    public int numMenor(){
+        int menor= listNum.getFirst();
+        for (int i = 0; i < listNum.size(); i++) {
+            if (listNum.get(i)<menor) {
+                menor=listNum.get(i);
             }
         }
         return menor;
     }
 
-    public int numeroMasRepetido() {
-        int maxFrecuencia= 0;
-        for (int i = 0; i < 6; i++) {
-            if(numero[i]> maxFrecuencia){
-                maxFrecuencia=numero[i];
-            }
-
-        }
-        return maxFrecuencia;
+   public List<Integer> numeroMasRepetido(){
+        List<Integer> masRepetido= new ArrayList<>();
+        int numMaxRepetido=0;
+        int resultado=0;
+       numMaxRepetido = listNum.stream()
+               .mapToInt(n-> (int)listNum.stream().filter(d-> d.equals(n)).count())
+               .max().orElse(0);
+       for(int numero:listNum){
+           resultado= (int) listNum.stream().filter(n -> n.equals(numero)).count();
+           if(resultado==numMaxRepetido && !masRepetido.contains(numero)){
+                masRepetido.add(numero);
+           }
+       }
+       return masRepetido;
     }
 
-    public List<Integer> buscarMasRepetido(int maxFrecuencia){
-        List<Integer> masRepetido = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            if(numero[i]== maxFrecuencia){
-                masRepetido.add(i +1);
-            }
+    // Suma todos los números de la lista
+    public int sumarNumeros() {
+        int suma = 0;
+        for (int num : listNum) {
+            suma += num;
         }
-        return masRepetido;
+        return suma;
     }
 
+    // Calcula la media de los números de la lista
+    public double mediaNumeros() {
+        if (listNum.isEmpty()) return 0;
+        return (double) sumarNumeros() / listNum.size();
+    }
 }

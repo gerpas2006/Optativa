@@ -12,6 +12,6 @@ public class Principal {
         System.out.println(("Estos son los 10 números aleatorios "+Arrays.toString(d.generarAleatorio())));
         System.out.println("El numero más grande de los generados es "+d.numeroMayor());
         System.out.println("El número mas chico de los generados es "+d.numeroMenor());
-        System.out.println("El numero mas repetido es "+ d.numeroMasRepetido());
+        System.out.println("El numero mas repetido es "+ d.buscarMasRepetido(d.numeroMasRepetido()));
     }
 }

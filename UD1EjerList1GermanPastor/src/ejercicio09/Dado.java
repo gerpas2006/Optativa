@@ -1,6 +1,8 @@
 package ejercicio09;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Dado {
@@ -56,25 +58,24 @@ public class Dado {
     }
 
     public int numeroMasRepetido() {
-        generarAleatorio();
-        int numeroRepetido = numero[0];
-        int maxFrecuencia = 0;
-
-        for (int i = 0; i < numero.length; i++) {
-            int contador = 0;
-            for (int j = 0; j < numero.length; j++) {
-                if (numero[i] == numero[j]) {
-                    contador++;
-                }
+        int maxFrecuencia= 0;
+        for (int i = 0; i < 6; i++) {
+            if(numero[i]> maxFrecuencia){
+                maxFrecuencia=numero[i];
             }
 
-            if (contador > maxFrecuencia) {
-                maxFrecuencia = contador;
-                numeroRepetido = numero[i];
+        }
+        return maxFrecuencia;
+    }
+
+    public List<Integer> buscarMasRepetido(int maxFrecuencia){
+        List<Integer> masRepetido = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            if(numero[i]== maxFrecuencia){
+                masRepetido.add(i +1);
             }
         }
-
-        return numeroRepetido;
+        return masRepetido;
     }
 
 }

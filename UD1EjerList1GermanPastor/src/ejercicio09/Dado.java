@@ -82,9 +82,13 @@ public class Dado {
         return suma;
     }
 
-    // Calcula la media de los números de la lista
-    public double mediaNumeros() {
-        if (listNum.isEmpty()) return 0;
-        return (double) sumarNumeros() / listNum.size();
+    public  int contarNumero(int numero){
+        int cont=0;
+        for(int i : listNum){
+            if(i==numero){
+                cont++;
+            }
+        }
+        return cont;
     }
 }

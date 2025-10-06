@@ -5,8 +5,8 @@ public class Cuadrado extends Figura {
     private int numLados;
     private double longPorLado;
 
-    public Cuadrado(double area, double volumen, int numLados, double longPorLado) {
-        super(area, volumen);
+    public Cuadrado(int numLados, double longPorLado) {
+
         this.numLados = numLados;
         this.longPorLado = longPorLado;
     }
@@ -36,13 +36,13 @@ public class Cuadrado extends Figura {
     }
 
     public double calcularArea(){
-       double area=super.getArea();
+       double area=0;
         area =numLados+longPorLado;
         return area;
     }
 
     public double calcularVolumen(){
-        double volumen = super.getVolumen();
+        double volumen = 0;
         volumen = Math.pow(longPorLado,3);
         return volumen;
     }

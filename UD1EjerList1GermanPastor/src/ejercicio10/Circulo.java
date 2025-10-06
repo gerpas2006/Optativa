@@ -4,8 +4,7 @@ public class Circulo extends Figura{
 
     private double radio;
 
-    public Circulo(double area, double volumen, double radio) {
-        super(area, volumen);
+    public Circulo(double radio) {
         this.radio = radio;
     }
 
@@ -25,9 +24,14 @@ public class Circulo extends Figura{
     }
 
     public double calcularArea(){
-        double area = super.getArea(),pi=3.14;
+        double area =0,pi=3.14;
         area=pi*Math.pow(radio,2);
         return area;
+    }
+
+    @Override
+    public double calcularVolumen() {
+        return 0;
     }
 
 }

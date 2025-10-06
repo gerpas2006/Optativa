@@ -1,37 +1,24 @@
 package ejercicio10;
 
+import java.util.List;
+
 public class Figura {
 
-    private double area;
-    private double volumen;
+    public double calcularArea(){
+        return 0;
+    };
 
-    public Figura(double area, double volumen) {
-        this.area = area;
-        this.volumen = volumen;
-    }
+    public double calcularVolumen(){
+        return 0;
+    };
 
-    public double getArea() {
-        return area;
-    }
+    public double calcularMediaDeLasAreas(List<Figura> list){
+        double media=0;
+        for (int i = 0; i < list.size(); i++) {
+            media+=list.get(i).calcularArea()/list.size();
+        }
+        return media;
 
-    public void setArea(double area) {
-        this.area = area;
-    }
-
-    public double getVolumen() {
-        return volumen;
-    }
-
-    public void setVolumen(double volumen) {
-        this.volumen = volumen;
-    }
-
-    @Override
-    public String toString() {
-        return "Figura{" +
-                "area=" + area +
-                ", volumen=" + volumen +
-                '}';
     }
 
 

@@ -6,8 +6,7 @@ public class Rectangulo extends Figura{
     private double altura;
     private double largo;
 
-    public Rectangulo(double area, double volumen, double base, double altura, double largo) {
-        super(area, volumen);
+    public Rectangulo(double base, double altura, double largo) {
         this.base = base;
         this.altura = altura;
         this.largo = largo;
@@ -47,13 +46,13 @@ public class Rectangulo extends Figura{
     }
 
     public double calcularArea(){
-        double area=super.getArea();
+        double area=0;
         area=base*altura;
         return area;
     }
 
     public double calcularVolumen(){
-        double volumen = super.getVolumen();
+        double volumen = 0;
         volumen=largo*base*altura;
         return volumen;
     }

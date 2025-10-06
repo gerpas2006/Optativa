@@ -5,8 +5,7 @@ public class Triangulo extends Figura{
     private double base;
     private double altura;
 
-    public Triangulo(double area, double volumen, double base, double altura) {
-        super(area, volumen);
+    public Triangulo(double base, double altura) {
         this.base = base;
         this.altura = altura;
     }
@@ -35,15 +34,15 @@ public class Triangulo extends Figura{
                 '}';
     }
 
-    public double calcuarArea(){
-        double area = getArea();
+    public double calcularArea(){
+        double area = 0;
         area=(base*altura)/2;
         return area;
     }
 
     public double calcularVolumen(){
-        double volumen = super.getVolumen();
-        volumen= this.calcuarArea()*altura;
+        double volumen =0;
+        volumen= this.calcularArea()*altura;
         return volumen;
     }
 }

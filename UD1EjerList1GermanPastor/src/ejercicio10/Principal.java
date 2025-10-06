@@ -23,7 +23,7 @@ public class Principal {
         System.out.printf("\nEl area del triangulo es %.2f y el volumen es %.2f",triangulo.calcularArea(),triangulo.calcularVolumen());
         System.out.printf("\nEl area del rectangulo es %.2f y el volumen es %.2f",rectangulo.calcularArea(),rectangulo.calcularVolumen());
         System.out.printf("\nEl area del cuadrado es %.2f y el volumen es %.2f",cuadrado.calcularArea(),cuadrado.calcularVolumen());
-        System.out.printf("\nLa media de todas las areas de las figuras es %.2f ",figura.calcularMediaDeLasAreas(list));
+        System.out.printf("\nLa media de todas las areas de las figuras es %.3f ",figura.calcularMediaDeLasAreas(list));
 
     }
 }

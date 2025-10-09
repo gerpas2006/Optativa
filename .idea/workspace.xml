@@ -19,7 +19,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/gerpas2006/Optativa.git",
-    "accountId": "caaca80e-3c10-4db8-9bd3-85f2134a31c8"
+    "accountId": "62ae20ec-e250-4e57-8853-e37edb6cc5f3"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -38,7 +38,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/germa/Documents/Optativa",
+    "last_opened_file_path": "C:/Users/pastor.moger24_trian/Documents/Optativa",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -49,14 +49,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -16,7 +16,7 @@ public class Principal {
         Empresa empresa = new Empresa(sueldo);
         Jefe jefe = new Jefe(sueldo, incentivo);
         Programador programador = new Programador(sueldo, precioHorasExtras);
-
+        Empresa empresa1=new Jefe(2,5);
         int opcion;
         do {
             System.out.println("\n=== Menú Principal ===");
@@ -34,10 +34,11 @@ public class Principal {
                     trabajosTerminados = Integer.parseInt(sc.nextLine());
                     System.out.printf(
                             "El sueldo del jefe sin contar ningun trabajo es de %.2f€ pero si contamos los %d trabajos terminado se le quedaría un sueldo de %.2f€\n",
-                            empresa.calcularSueldo(horasTrabajadasJefe),
-                            trabajosTerminados,
+                            empresa.calcularSueldo(horasTrabajadasJefe), trabajosTerminados,
                             jefe.calcularSueldo(horasTrabajadasJefe, trabajosTerminados)
+
                     );
+                    //empresa1.calcularSueldo(2,5);
                     break;
                 case 2:
                     System.out.println("Dime cuantas horas normales ha trabajado el programador:");

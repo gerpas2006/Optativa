@@ -24,9 +24,9 @@ public class Programador extends Empresa{
                 '}';
     }
 
-    public double calcularSueldo(double horasTrabajadas,double horasEstras){
+    public double calcularSueldo(double horasTrabajadas,double horasExtras){
         double resultado=0;
-        resultado = super.calcularSueldo(horasTrabajadas)+(horasEstras*precioHorasExtras);
+        resultado = super.calcularSueldo(horasTrabajadas)+(horasExtras*precioHorasExtras);
         return resultado;
     }
 }

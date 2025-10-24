@@ -24,7 +24,7 @@ public class Clases {
     @JoinColumn(name = "profesor_id")
     private Profesores profesores;
 
-    @OneToMany(mappedBy = "clases", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "clases", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Alumnos> listaAlumnos;
 }

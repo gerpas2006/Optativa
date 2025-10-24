@@ -1,10 +1,7 @@
 package com.salesianostrian.dam.pastormolerogerman.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -28,6 +25,7 @@ public class Profesores {
     private Long telefono;
     private String dni;
     private Long NUSS;
+    private double sueldo;
     private String fotoProfesor;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,8 +40,8 @@ public class Profesores {
     @JoinColumn(name = "alumnos_id")
     private List<Alumnos> listaAlumnos;
 
-    @OneToMany
-    @JoinColumn(name = "acitividad_id")
-    private List<Actividades> listaActividades;
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    private List<Incidencias> incidencias;
 
 }

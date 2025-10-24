@@ -2230,3 +2230,115 @@ insert into actividades (id, nombreact, descripcion, duracion, dia, profesor_id)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
 	at com.salesianostrian.dam.pastormolerogerman.PastormolerogermanApplication.main(PastormolerogermanApplication.java:10)
+2025-10-24 08:49:53.436011+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'NUSS12345678' (PROFESORES: ""NUSS"" BIGINT)"
+Data conversion error converting "'NUSS12345678' (PROFESORES: ""NUSS"" BIGINT)"; SQL statement:
+INSERT INTO profesores (FECHA_NACIMIENTO, SUELDO, CLASES_ID, ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) VALUES ('1985-06-12', 2200.50, 1, 1, 'NUSS12345678', '600123456', 'González', '12345678A', 'maria.gonzalez@example.com', 'maria_gonzalez.jpg', 'María') [22018-232]
+2025-10-24 08:49:53.440000+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'NUSS87654321' (PROFESORES: ""NUSS"" BIGINT)"
+Data conversion error converting "'NUSS87654321' (PROFESORES: ""NUSS"" BIGINT)"; SQL statement:
+INSERT INTO profesores (FECHA_NACIMIENTO, SUELDO, CLASES_ID, ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) VALUES ('1990-02-20', 2100.00, 2, 2, 'NUSS87654321', '600987654', 'Ramírez', '23456789B', 'carlos.ramirez@example.com', 'carlos_ramirez.jpg', 'Carlos') [22018-232]
+2025-10-24 08:49:53.442992+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'NUSS11223344' (PROFESORES: ""NUSS"" BIGINT)"
+Data conversion error converting "'NUSS11223344' (PROFESORES: ""NUSS"" BIGINT)"; SQL statement:
+INSERT INTO profesores (FECHA_NACIMIENTO, SUELDO, CLASES_ID, ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) VALUES ('1982-11-05', 2300.00, 3, 3, 'NUSS11223344', '600555444', 'Fernández', '34567890C', 'lucia.fernandez@example.com', 'lucia_fernandez.jpg', 'Lucía') [22018-232]
+2025-10-24 08:55:49.593176+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) [42001-232]
+2025-10-24 08:55:49.609163+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) [42001-232]
+2025-10-24 08:55:49.611129+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) [42001-232]
+2025-10-24 09:17:07.447801+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ACTIVIDADES (DIA, DURACION, ACITIVIDAD_ID, ID, PROFESOR_ID, DESCRIPCION, NOMBRE_ACT)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ACTIVIDADES (DIA, DURACION, ACITIVIDAD_ID, ID, PROFESOR_ID, DESCRIPCION, NOMBRE_ACT)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ACTIVIDADES (DIA, DURACION, ACITIVIDAD_ID, ID, PROFESOR_ID, DESCRIPCION, NOMBRE_ACT) [42001-232]
+2025-10-24 09:22:09.180611+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ACTIVIDADES (DIA, DURACION, ACITIVIDAD_ID, ID, PROFESOR_ID, DESCRIPCION, NOMBRE_ACT)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ACTIVIDADES (DIA, DURACION, ACITIVIDAD_ID, ID, PROFESOR_ID, DESCRIPCION, NOMBRE_ACT)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ACTIVIDADES (DIA, DURACION, ACITIVIDAD_ID, ID, PROFESOR_ID, DESCRIPCION, NOMBRE_ACT) [42001-232]
+2025-10-24 09:44:00.221211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INCIDENCIA" no encontrada
+Table "INCIDENCIA" not found; SQL statement:
+INSERT INTO INCIDENCIA (RESUELTA, ALUMNO_ID, FECHA, ID, PROFESOR_ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (0, 1, '2025-10-23 09:15:00', 1, 2, 'Corte pequeño en la mano izquierda; limpiada y vendada en enfermería. Se avisó a la familia.', 'MEDIA', NULL) [42102-232]
+2025-10-24 09:44:00.229159+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INCIDENCIA" no encontrada
+Table "INCIDENCIA" not found; SQL statement:
+INSERT INTO INCIDENCIA (RESUELTA, ALUMNO_ID, FECHA, ID, PROFESOR_ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, 2, '2025-10-24 11:30:00', 2, 1, 'Conflicto en el patio entre dos niños; mediación y seguimiento por el tutor.', 'BAJA', 'Padres informados; seguimiento en clase.') [42102-232]
+2025-10-24 09:44:00.230158+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INCIDENCIA" no encontrada
+Table "INCIDENCIA" not found; SQL statement:
+INSERT INTO INCIDENCIA (RESUELTA, ALUMNO_ID, FECHA, ID, PROFESOR_ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, NULL, '2025-10-24 12:05:00', 3, 3, 'Puerta del aula quedó entreabierta tras el recreo; cerrada y comprobado el mecanismo de cierre.', 'ALTA', 'Notificada dirección; revisado cierre y aplicada medida correctora.') [42102-232]
+2025-10-24 09:51:51.306004+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Imposible eliminar "ACTIVIDADES" debido a que "FKKT474MRG7YHSMO6I7MB3P3DPQ" depende de él.
+Cannot drop "ACTIVIDADES" because "FKKT474MRG7YHSMO6I7MB3P3DPQ" depends on it; SQL statement:
+DROP TABLE IF EXISTS ACTIVIDADES [90107-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeUpdate(Command.java:248)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applyScript(Helper.java:255)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportFiles(SchemaCreatorImpl.java:694)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:597)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:186)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:144)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:120)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:250)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1517)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.salesianostrian.dam.pastormolerogerman.PastormolerogermanApplication.main(PastormolerogermanApplication.java:10)
+2025-10-24 09:58:09.830934+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM INCIDENCIAS WHERE ALUMNO_ID =[*]= 1"; se esperaba "ALL (, ANY (, SOME ("
+Syntax error in SQL statement "SELECT * FROM INCIDENCIAS WHERE ALUMNO_ID =[*]= 1"; expected "ALL (, ANY (, SOME ("; SQL statement:
+SELECT * FROM INCIDENCIAS WHERE ALUMNO_ID == 1 [42001-232]
+2025-10-24 09:58:20.732774+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM INCIDENCIAS \000d\000aWHERE ALUMNO_ID =[*]= 1"; se esperaba "ALL (, ANY (, SOME ("
+Syntax error in SQL statement "SELECT * FROM INCIDENCIAS \000d\000aWHERE ALUMNO_ID =[*]= 1"; expected "ALL (, ANY (, SOME ("; SQL statement:
+SELECT * FROM INCIDENCIAS 
+WHERE ALUMNO_ID == 1 [42001-232]
+2025-10-24 09:59:41.024121+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]ALUMNOS"; se esperaba "ALTER, ANALYZE"
+Syntax error in SQL statement "[*]ALUMNOS"; expected "ALTER, ANALYZE"; SQL statement:
+ALUMNOS [42001-232]

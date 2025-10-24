@@ -27,7 +27,10 @@ public class MainController {
         model.addAttribute("contarProfesores", profesoresService.contarProfesores());
         model.addAttribute("contarIncidencias", incidenciasService.contarIncidencias());
         model.addAttribute("contarClases", clasesService.contarClases());
+        model.addAttribute("algunasIncidencias", incidenciasService.mostrarUnNumeroDeIncidencias());
+        model.addAttribute("algunosProfesores", profesoresService.mostrarAlgunasIncidencias());
         return "inicio";
     }
+
 
 }

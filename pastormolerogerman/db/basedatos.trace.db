@@ -2366,3 +2366,147 @@ The connection was not closed by the application and is garbage collected [90018
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2025-10-24 16:06:37.131856+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1423)
+	at org.h2.jdbc.JdbcConnection.getAutoCommit(JdbcConnection.java:463)
+	at com.zaxxer.hikari.pool.ProxyConnection.getAutoCommit(ProxyConnection.java:405)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.getAutoCommit(HikariProxyConnection.java)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:49)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.getIsolatedConnection(GenerationTargetToDatabase.java:60)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.jdbcStatement(GenerationTargetToDatabase.java:112)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:79)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl.perform(SchemaDropperImpl.java:628)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryClosing(SessionFactoryObserverForSchemaExport.java:48)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryClosing(SessionFactoryObserverChain.java:48)
+	at org.hibernate.internal.SessionFactoryImpl.close(SessionFactoryImpl.java:928)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.invokeProxyMethod(AbstractEntityManagerFactoryBean.java:529)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean$ManagedEntityManagerFactoryInvocationHandler.invoke(AbstractEntityManagerFactoryBean.java:750)
+	at jdk.proxy1/jdk.proxy1.$Proxy114.close(Unknown Source)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy(AbstractEntityManagerFactoryBean.java:662)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:212)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:798)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:748)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1489)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:707)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1482)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1219)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1180)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1126)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-10-24 16:06:37.137370+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1423)
+	at org.h2.jdbc.JdbcConnection.clearWarnings(JdbcConnection.java:658)
+	at com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:258)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.closeConnection(DatasourceConnectionProviderImpl.java:131)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.releaseConnection(JdbcEnvironmentInitiator.java:490)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.release(DdlTransactionIsolatorNonJtaImpl.java:106)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.release(GenerationTargetToDatabase.java:134)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl.perform(SchemaDropperImpl.java:639)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryClosing(SessionFactoryObserverForSchemaExport.java:48)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryClosing(SessionFactoryObserverChain.java:48)
+	at org.hibernate.internal.SessionFactoryImpl.close(SessionFactoryImpl.java:928)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.invokeProxyMethod(AbstractEntityManagerFactoryBean.java:529)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean$ManagedEntityManagerFactoryInvocationHandler.invoke(AbstractEntityManagerFactoryBean.java:750)
+	at jdk.proxy1/jdk.proxy1.$Proxy114.close(Unknown Source)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.destroy(AbstractEntityManagerFactoryBean.java:662)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:212)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:798)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:748)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1489)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:707)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1482)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1219)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1180)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1126)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:147)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-10-24 16:06:37.140031+02:00 database: close
+org.h2.message.DbException: IO Exception: "Closing"
+IO Exception: "Closing" [90028-232]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.close(Store.java:374)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1292)
+	at org.h2.engine.Database.closeImpl(Database.java:1254)
+	at org.h2.engine.Database.close(Database.java:1173)
+	at org.h2.engine.Database.onShutdown(Database.java:1158)
+	at org.h2.engine.OnExitDatabaseCloser.onShutdown(OnExitDatabaseCloser.java:85)
+	at org.h2.engine.OnExitDatabaseCloser.run(OnExitDatabaseCloser.java:114)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "Closing"
+IO Exception: "Closing" [90028-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 8 more
+Caused by: org.h2.mvstore.MVStoreException: java.lang.AssertionError [2.3.232/3]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.MVStore.executeFilestoreOperation(MVStore.java:926)
+	at org.h2.mvstore.RandomAccessStore.compactMoveChunks(RandomAccessStore.java:463)
+	at org.h2.mvstore.RandomAccessStore.compactStore(RandomAccessStore.java:443)
+	at org.h2.mvstore.FileStore.compactStore(FileStore.java:890)
+	at org.h2.mvstore.FileStore.stop(FileStore.java:275)
+	at org.h2.mvstore.MVStore.closeStore(MVStore.java:693)
+	at org.h2.mvstore.MVStore.close(MVStore.java:643)
+	at org.h2.mvstore.db.Store.close(Store.java:364)
+	... 6 more
+Caused by: java.lang.AssertionError
+	at org.h2.mvstore.RandomAccessStore.moveChunkInside(RandomAccessStore.java:630)
+	at org.h2.mvstore.RandomAccessStore.compactMoveChunks(RandomAccessStore.java:569)
+	at org.h2.mvstore.RandomAccessStore.compactMoveChunks(RandomAccessStore.java:481)
+	at org.h2.mvstore.RandomAccessStore.lambda$compactMoveChunks$1(RandomAccessStore.java:468)
+	at org.h2.mvstore.FileStore.executeFileStoreOperation(FileStore.java:1893)
+	at org.h2.mvstore.MVStore.executeFilestoreOperation(MVStore.java:922)
+	... 13 more
+2025-10-24 17:49:23.071133+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "FOTO_PROFESOR CHARACTER VARYING(255)": "'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSExIVFRUXFRcY... (10259)"
+Value too long for column "FOTO_PROFESOR CHARACTER VARYING(255)": "'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSExIVFRUXFRcY... (10259)"; SQL statement:
+INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) VALUES (2, '1990-02-20', 2100.00, NULL, '87654321', '600987654', 'Ramírez', '23456789B', 'carlos.ramirez@example.com', 'data:image/jpeg;base64,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', 'Carlos') [22001-232]
+2025-10-24 19:08:10.970166+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) [42001-232]
+2025-10-24 19:08:10.980263+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) [42001-232]
+2025-10-24 19:08:10.982337+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) [42001-232]
+2025-10-24 19:08:10.983579+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) [42001-232]
+2025-10-24 19:08:10.984653+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) [42001-232]
+2025-10-24 19:08:10.985982+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) [42001-232]
+2025-10-24 19:08:10.987035+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) [42001-232]

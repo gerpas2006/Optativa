@@ -24,6 +24,7 @@ public class Alumnos {
     private String emailContacto;
     private Long telefonoContacto;
     private String dni;
+    @Lob
     private String fotoAlumno;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,5 +43,5 @@ public class Alumnos {
 
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-        private List<Incidencias> incidencias;
+    private List<Incidencias> incidencias;
 }

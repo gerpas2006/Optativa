@@ -21,4 +21,19 @@ public class AlumnosService {
     public Long contarAlumnos(){
         return alumnosRepository.count();
     }
+
+    public List<Alumnos> listarAlumnos(){
+        return alumnosRepository.findAll();
+    }
+
+    public void eliminarAlumno(Long id){
+        alumnosRepository.deleteById(id);
+    }
+
+    public Alumnos buscarPorDni(String dni){
+        List<Alumnos> lista = listarAlumnos();
+        return lista.stream().filter(alumno -> alumno.getDni().equalsIgnoreCase(dni)).findFirst().orElse(null);
+    }
+
+
 }

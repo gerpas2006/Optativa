@@ -42,5 +42,5 @@ public class Alumnos {
 
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
-    private List<Incidencias> incidencias;
+        private List<Incidencias> incidencias;
 }

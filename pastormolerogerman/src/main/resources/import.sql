@@ -32,9 +32,9 @@ INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, ALUMNOS_ID, CLASES_ID, PROFESOR_ID, T
 
 
 
-INSERT INTO INCIDENCIAS (RESUELTA, ALUMNO_ID, FECHA, ID, PROFESOR_ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (0, 1, '2025-10-23', 1, 2, 'Corte pequeño en la mano izquierda; limpiada y vendada en enfermería. Se avisó a la familia.', 'MEDIA', NULL);
+INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (0, '2025-10-23', 1, 'Corte pequeño en la mano izquierda; limpiada y vendada en enfermería. Se avisó a la familia.', 'MEDIA', NULL);
 
-INSERT INTO INCIDENCIAS (RESUELTA, ALUMNO_ID, FECHA, ID, PROFESOR_ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, 2, '2025-10-24', 2, 1, 'Conflicto en el patio entre dos niños; mediación y seguimiento por el tutor.', 'BAJA', 'Padres informados; seguimiento en clase.');
+INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, '2025-10-24', 2, 'Conflicto en el patio entre dos niños; mediación y seguimiento por el tutor.', 'BAJA', 'Padres informados; seguimiento en clase.');
 
-INSERT INTO INCIDENCIAS (RESUELTA, ALUMNO_ID, FECHA, ID, PROFESOR_ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, 1, '2025-10-24', 3, 3, 'Puerta del aula quedó entreabierta tras el recreo; cerrada y comprobado el mecanismo de cierre.', 'ALTA', 'Notificada dirección; revisado cierre y aplicada medida correctora.');
+INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, '2025-10-24', 3, 'Puerta del aula quedó entreabierta tras el recreo; cerrada y comprobado el mecanismo de cierre.', 'ALTA', 'Notificada dirección; revisado cierre y aplicada medida correctora.');
 

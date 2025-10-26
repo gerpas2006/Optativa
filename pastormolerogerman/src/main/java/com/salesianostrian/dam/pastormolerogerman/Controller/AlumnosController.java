@@ -26,7 +26,7 @@ public class AlumnosController {
         model.addAttribute("alumnos", new Alumnos());
         model.addAttribute("listarAlumnos", alumnosService.listarAlumnos());
          model.addAttribute("clases", clasesService.listarClases());
-         model.addAttribute("incidencias",incidenciasService.devolverTodasLasIncidencias());
+        //model.addAttribute("incidencias",incidenciasService.devolverTodasLasIncidencias());
          model.addAttribute("profesores", profesoresService.listarProfesores());
          return "alumnos";
     }
@@ -49,7 +49,7 @@ public class AlumnosController {
     public String agregarAlumnos(Model model){
         model.addAttribute("alumnos", new Alumnos());
         model.addAttribute("clases", clasesService.listarClases());
-        model.addAttribute("incidencias", incidenciasService.devolverTodasLasIncidencias());
+        //model.addAttribute("incidencias", incidenciasService.devolverTodasLasIncidencias());
         model.addAttribute("profesores", profesoresService.listarProfesores());
         return "alumnos";
     }

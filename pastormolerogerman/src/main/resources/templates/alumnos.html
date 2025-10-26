@@ -115,8 +115,7 @@
 
                                     <div class="mb-3">
                                         <label for="fotoAlumno" class="form-label">Foto</label>
-                                        <input type="url" class="form-control" id="fotoAlumno"
-                                            th:field="*{fotoAlumno}">
+                                        <input type="url" class="form-control" id="fotoAlumno" th:field="*{fotoAlumno}">
                                     </div>
 
                                     <div class="mb-3">
@@ -134,7 +133,8 @@
                                         <label for="profesor" class="form-label">Profesor</label>
                                         <select class="form-select" id="profesor" th:field="*{profesor}">
                                             <option th:each="profesor : ${profesores}" th:value="${profesor.id}"
-                                                th:text="${profesor.nombreProfesor + ' ' + profesor.apellidoProfesor}"></option>
+                                                th:text="${profesor.nombreProfesor + ' ' + profesor.apellidoProfesor}">
+                                            </option>
                                         </select>
                                     </div>
 
@@ -261,7 +261,7 @@
                             <li><span class="fw-bold">Alergias:</span> <span th:text="${alumno.alergias}"></span></li>
                             <li><span class="fw-bold">Clases:</span> <span
                                     th:text="${alumno.clases.nombreClase}"></span></li>
-                            <li><span class="fw-bold">Incidencias:</span> <span th:text="${alumno.incidencias}"></span>
+                            <!-- <li><span class="fw-bold">Incidencias:</span> <span th:text="${alumno.incidencias}"></span> -->
                             </li>
                         </ul>
                     </div>

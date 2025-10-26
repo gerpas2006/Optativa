@@ -40,8 +40,8 @@ public class Profesores {
     @JoinColumn(name = "alumnos_id")
     private List<Alumnos> listaAlumnos;
 
-    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @ToString.Exclude
-    private List<Incidencias> incidencias;
+    //@OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@ToString.Exclude
+    //private List<Incidencias> incidencias;
 
 }

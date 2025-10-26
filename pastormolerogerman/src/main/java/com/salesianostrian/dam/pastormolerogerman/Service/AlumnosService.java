@@ -35,5 +35,9 @@ public class AlumnosService {
         return lista.stream().filter(alumno -> alumno.getDni().equalsIgnoreCase(dni)).findFirst().orElse(null);
     }
 
+    public void agregarAlumno(Alumnos alumnos){
+        alumnosRepository.save(alumnos);
+    }
+
 
 }

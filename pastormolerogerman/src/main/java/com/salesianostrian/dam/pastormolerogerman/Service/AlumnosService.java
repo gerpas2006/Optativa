@@ -39,5 +39,8 @@ public class AlumnosService {
         alumnosRepository.save(alumnos);
     }
 
+    public void editarAlumno(Alumnos alumnos){
+        alumnosRepository.save(alumnos);
+    }
 
 }

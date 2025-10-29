@@ -30,13 +30,4 @@ public class Incidencias {
     private Boolean resuelta;
 
     private String observacionesResolucion;
-
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "alumno_id")
-    //private Alumnos alumno;
-
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "profesor_id")
-    //private Profesores profesor;
-
 }

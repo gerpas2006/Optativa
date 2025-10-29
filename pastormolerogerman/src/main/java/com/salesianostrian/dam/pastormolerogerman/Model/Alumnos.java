@@ -41,7 +41,4 @@ public class Alumnos {
     @JoinColumn(name = "clases_id")
     private Clases clases;
 
-    //@OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ToString.Exclude
-    //private List<Incidencias> incidencias;
 }

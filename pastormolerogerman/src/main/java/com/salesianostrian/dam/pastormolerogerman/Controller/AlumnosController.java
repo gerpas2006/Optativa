@@ -31,7 +31,7 @@ public class AlumnosController {
          return "alumnos";
     }
 
-    @PostMapping("/alumnos/{id}")
+    @PostMapping("/alumnos/elimnar/{id}")
     public String eliminarAlumnos(@PathVariable Long id){
         alumnosService.eliminarAlumno(id);
         return "redirect:/alumnos";
@@ -58,6 +58,21 @@ public class AlumnosController {
     public String agregarAlumno(@ModelAttribute Alumnos alumnos,Model model){
         alumnosService.agregarAlumno(alumnos);
         return "redirect:/alumnos";
+    }
+
+    @GetMapping("/alumnos/editar/{dni}")
+    public String editarAlumno(@PathVariable String dni, Model model) {
+        model.addAttribute("alumnos", alumnosService.buscarPorDni(dni));
+        model.addAttribute("clases", clasesService.listarClases());
+        model.addAttribute("profesores", profesoresService.listarProfesores());
+        return "editarAlumno";
+    }
+
+    @PostMapping("/alumnos/editar")
+    public String enviarEditarAlumno(@ModelAttribute Alumnos alumnos){
+        alumnosService.editarAlumno(alumnos);
+        return "redirect:/alumnos";
+
     }
 
 

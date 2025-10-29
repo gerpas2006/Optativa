@@ -37,11 +37,8 @@ public class Profesores {
     private Clases clases;
 
     @OneToMany
-    @JoinColumn(name = "alumnos_id")
+    @JoinColumn(name = "profesor_id")
     private List<Alumnos> listaAlumnos;
 
-    //@OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ToString.Exclude
-    //private List<Incidencias> incidencias;
 
 }

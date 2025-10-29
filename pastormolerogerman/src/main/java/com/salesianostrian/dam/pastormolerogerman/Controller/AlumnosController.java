@@ -51,7 +51,7 @@ public class AlumnosController {
         model.addAttribute("clases", clasesService.listarClases());
         //model.addAttribute("incidencias", incidenciasService.devolverTodasLasIncidencias());
         model.addAttribute("profesores", profesoresService.listarProfesores());
-        return "alumnos";
+        return "editarAlumno";
     }
 
     @PostMapping("/alumnos/guardar")

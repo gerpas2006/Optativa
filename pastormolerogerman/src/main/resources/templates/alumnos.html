@@ -131,7 +131,7 @@
                                     <td th:text="${alumno.apellidoAlumno}"></td>
                                     <td th:text="${alumno.emailContacto}"></td>
                                     <td th:text="${alumno.telefonoContacto}"></td>
-                                    <td th:text="${alumno.clases.nombreClase}"></td>
+                                    <td th:text="${alumno.clases != null && alumno.clases.nombreClase != null ? alumno.clases.nombreClase : 'Sin clase'}"></td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-success btn-sm" th:attr="data-bs-toggle='modal'"
@@ -146,7 +146,7 @@
                                                 class="d-inline">
                                                 <button
                                                     onclick="return confirm('¿Estás seguro de que quieres eliminar al alumno?')"
-                                                    class="btn btn-outline-danger btn-sm">
+                                                    class="btn btn-outline-danger btn-sm" type="submit">
                                                     <i class="bi bi-trash-fill"></i> Eliminar
                                                 </button>
                                             </form>
@@ -182,7 +182,7 @@
                                 onerror="this.src='/static/images/default-avatar.png'">
                             <figcaption class="mt-3 text-center">
                                 <strong th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"></strong>
-                                <div class="text-muted" th:text="${alumno.clases.nombreClase}"></div>
+                                <div class="text-muted" th:text="${alumno.clases.nombreClase != null ? alumno.clases.nombreClase : 'Sin clase'}"></div>
                             </figcaption>
                         </div>
 
@@ -223,7 +223,7 @@
                             onerror="this.src='/static/images/default-avatar.png'">
                         <div class="mt-3">
                             <h5 class="mb-0" th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"></h5>
-                            <small class="text-muted" th:text="${alumno.clases.nombreClase}"></small>
+                            <!-- <small class="text-muted" th:text="${alumno.clases.nombreClase != null ? alumno.clases.nombreClase : 'Sin clase'}"></small> -->
                         </div>
                     </div>
                     <div class="modal-footer">

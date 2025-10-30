@@ -117,7 +117,6 @@
                             <tbody>
                                 <tr th:each="alumno : ${listarAlumnos}">
                                     <td>
-                                        <!-- Miniatura que abre modal de imagen (sin CSS personalizado) -->
                                         <button type="button" class="btn p-0 border-0 bg-transparent"
                                             data-bs-toggle="modal"
                                             th:attrappend="data-bs-target='#alumnoModalImg' + ${alumno.id}"
@@ -131,7 +130,8 @@
                                     <td th:text="${alumno.apellidoAlumno}"></td>
                                     <td th:text="${alumno.emailContacto}"></td>
                                     <td th:text="${alumno.telefonoContacto}"></td>
-                                    <td th:text="${alumno.clases != null && alumno.clases.nombreClase != null ? alumno.clases.nombreClase : 'Sin clase'}"></td>
+                                    <td th:text="${alumno.clases != null ? alumno.clases.nombreClase : 'Sin clase'}">
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-success btn-sm" th:attr="data-bs-toggle='modal'"
@@ -146,7 +146,7 @@
                                                 class="d-inline">
                                                 <button
                                                     onclick="return confirm('¿Estás seguro de que quieres eliminar al alumno?')"
-                                                    class="btn btn-outline-danger btn-sm" type="submit">
+                                                    class="btn btn-outline-danger btn-sm">
                                                     <i class="bi bi-trash-fill"></i> Eliminar
                                                 </button>
                                             </form>
@@ -154,7 +154,6 @@
                                     </td>
                                 </tr>
                             </tbody>
-
                         </table>
                     </div>
                 </div>
@@ -162,9 +161,9 @@
         </div>
     </div>
 
-    <!-- Modales por alumno: Detalle mejorado + imagen ampliada -->
+    <!-- Modales por alumno -->
     <div th:each="alumno : ${listarAlumnos}">
-        <!-- Modal de detalle (Ver más) ahora más grande y con la foto más destacada -->
+        <!-- Modal de detalle -->
         <div class="modal fade" th:id="'alumnoModal' + ${alumno.id}" tabindex="-1"
             th:attr="aria-labelledby='modalLabel__' + ${alumno.id}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -175,14 +174,14 @@
                             aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- Imagen más grande y centrada usando solo Bootstrap -->
                         <div class="text-center mb-4">
                             <img th:src="${alumno.fotoAlumno}" alt="Foto del alumno" width="240" height="240"
                                 class="rounded-circle img-fluid shadow-lg d-block mx-auto"
                                 onerror="this.src='/static/images/default-avatar.png'">
                             <figcaption class="mt-3 text-center">
                                 <strong th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"></strong>
-                                <div class="text-muted" th:text="${alumno.clases.nombreClase != null ? alumno.clases.nombreClase : 'Sin clase'}"></div>
+                                <div class="text-muted"
+                                    th:text="${alumno.clases != null ? alumno.clases.nombreClase : 'Sin clase'}"></div>
                             </figcaption>
                         </div>
 
@@ -197,10 +196,19 @@
                                             th:text="${alumno.telefonoContacto}"></span></li>
                                     <li class="mb-2"><span class="fw-bold">Fecha de Nacimiento:</span> <span
                                             th:text="${alumno.fechaNacimiento}"></span></li>
-                                    <li class="mb-2"><span class="fw-bold">Alergias:</span> <span
-                                            th:text="${alumno.alergias}"></span></li>
-                                    <li class="mb-2"><span class="fw-bold">Profesor:</span> <span
-                                            th:text="${alumno.profesor.nombreProfesor + ' ' + alumno.profesor.apellidoProfesor}"></span>
+                                    <li class="mb-2">
+                                        <span class="fw-bold">Alergias:</span>
+                                        <div class="d-flex flex-wrap justify-content-center gap-1 mt-1">
+                                            <span class="badge bg-light text-dark border small"
+                                                th:each="alergia : ${alumno.alergias}" th:text="${alergia}"
+                                                th:if="${!#lists.isEmpty(alumno.alergias)}"></span>
+                                            <span class="badge bg-light text-dark border small"
+                                                th:if="${#lists.isEmpty(alumno.alergias)}">No tiene alergias</span>
+                                        </div>
+                                    </li>
+                                    <li class="mb-2"><span class="fw-bold">Profesor:</span>
+                                        <span
+                                            th:text="${alumno.profesor != null ? alumno.profesor.nombreProfesor + ' ' + alumno.profesor.apellidoProfesor : 'Sin profesor asignado'}"></span>
                                     </li>
                                 </ul>
                             </div>
@@ -213,7 +221,7 @@
             </div>
         </div>
 
-        <!-- Modal sólo para la imagen ampliada al hacer clic en la miniatura (también más grande) -->
+        <!-- Modal de imagen ampliada -->
         <div class="modal fade" th:id="'alumnoModalImg' + ${alumno.id}" tabindex="-1"
             th:attr="aria-labelledby='modalImgLabel__' + ${alumno.id}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -223,7 +231,6 @@
                             onerror="this.src='/static/images/default-avatar.png'">
                         <div class="mt-3">
                             <h5 class="mb-0" th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"></h5>
-                            <!-- <small class="text-muted" th:text="${alumno.clases.nombreClase != null ? alumno.clases.nombreClase : 'Sin clase'}"></small> -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -235,7 +242,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS (necesario para modales, dropdowns, etc.) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Footer -->

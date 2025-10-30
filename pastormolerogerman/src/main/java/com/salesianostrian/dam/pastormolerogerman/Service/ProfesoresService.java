@@ -28,4 +28,13 @@ public class ProfesoresService {
         return listado.stream().limit(numeroDeSalidas).toList();
 
     }
+
+    public List<Profesores> mostrarLosQueNoTienenCLases(){
+        List<Profesores> lista= listarProfesores();
+        return lista.stream().filter(profesores-> profesores.getClases()==null).toList();
+    }
+
+    public Profesores buscarPorId(Long id) {
+        return profesoresRepository.findById(id).orElse(null);
+    }
 }

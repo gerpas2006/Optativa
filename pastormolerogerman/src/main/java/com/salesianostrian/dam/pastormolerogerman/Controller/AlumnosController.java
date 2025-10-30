@@ -49,13 +49,12 @@ public class AlumnosController {
     public String agregarAlumnos(Model model){
         model.addAttribute("alumnos", new Alumnos());
         model.addAttribute("clases", clasesService.listarClases());
-        //model.addAttribute("incidencias", incidenciasService.devolverTodasLasIncidencias());
         model.addAttribute("profesores", profesoresService.listarProfesores());
         return "editarAlumno";
     }
 
     @PostMapping("/alumnos/guardar")
-    public String agregarAlumno(@ModelAttribute Alumnos alumnos,Model model){
+    public String agregarAlumno(@ModelAttribute Alumnos alumnos){
         alumnosService.agregarAlumno(alumnos);
         return "redirect:/alumnos";
     }

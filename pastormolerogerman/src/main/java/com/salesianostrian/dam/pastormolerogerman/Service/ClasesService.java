@@ -41,4 +41,23 @@ public class ClasesService {
         c.getProfesores().setClases(null);
         clasesRepository.delete(c);
     }
+
+    public Clases buscarUnaClase(String nombreClase){
+        List<Clases> lista = listarClases();
+        return lista.stream().filter(clases -> clases.getNombreClase().equalsIgnoreCase(nombreClase)).findFirst().orElse(null);
+    }
+
+    public void agregarClase(Clases clases){
+        clasesRepository.save(clases);
+    }
+
+    public void editarClase(Clases clases){
+        clasesRepository.save(clases);
+    }
+
+    public Clases buscarPorId(Long id){
+        return clasesRepository.findById(id).orElse(null);
+    }
+
+
 }

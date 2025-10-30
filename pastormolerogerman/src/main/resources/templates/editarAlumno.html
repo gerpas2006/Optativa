@@ -75,27 +75,31 @@
                         <i class="bi bi-pencil-square me-2"></i> Datos del Alumno
                     </div>
                     <div class="card-body bg-white">
-                        <form th:action="@{/alumnos/editar}" th:object="${alumnos}" method="post" enctype="multipart/form-data">
-                            <input type="hidden" th:field="*{id}" />
+                        <form th:action="${alumnos.dni} != null ? @{/alumnos/editar} : @{/alumnos/guardar}"
+                            th:object="${alumnos}" method="post"> <input type="hidden" th:field="*{id}" />
                             <div class="row mb-3">
                                 <div class="col-md-6 mb-3 mb-md-0">
                                     <label for="nombreAlumno" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombreAlumno" th:field="*{nombreAlumno}" required>
+                                    <input type="text" class="form-control" id="nombreAlumno" th:field="*{nombreAlumno}"
+                                        required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="apellidoAlumno" class="form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="apellidoAlumno" th:field="*{apellidoAlumno}" required>
+                                    <input type="text" class="form-control" id="apellidoAlumno"
+                                        th:field="*{apellidoAlumno}" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6 mb-3 mb-md-0">
                                     <label for="emailContacto" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="emailContacto" th:field="*{emailContacto}" required>
+                                    <input type="email" class="form-control" id="emailContacto"
+                                        th:field="*{emailContacto}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="telefonoContacto" class="form-label">Teléfono</label>
-                                    <input type="text" class="form-control" id="telefonoContacto" th:field="*{telefonoContacto}" required>
+                                    <input type="text" class="form-control" id="telefonoContacto"
+                                        th:field="*{telefonoContacto}" required>
                                 </div>
                             </div>
 
@@ -106,7 +110,8 @@
                                 </div>
                                 <div class="col-md-4 mb-3 mb-md-0">
                                     <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                                    <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+                                    <input type="date" class="form-control" id="fechaNacimiento"
+                                        th:field="*{fechaNacimiento}">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="fotoAlumno" class="form-label">Foto (URL)</label>
@@ -124,7 +129,8 @@
                                     <label for="profesor" class="form-label">Profesor</label>
                                     <select class="form-select" id="profesor" th:field="*{profesor}">
                                         <option th:each="profesor : ${profesores}" th:value="${profesor.id}"
-                                            th:text="${profesor.nombreProfesor + ' ' + profesor.apellidoProfesor}"></option>
+                                            th:text="${profesor.nombreProfesor + ' ' + profesor.apellidoProfesor}">
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">

@@ -32,14 +32,9 @@ public class Profesores {
     private LocalDate fechaNacimiento;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "clases_id")
     private Clases clases;
-
-//    @OneToMany
-//    @JoinColumn(name = "profesor_id")
-//    private List<Alumnos> listaAlumnos;
-
 
 
 }

@@ -5,8 +5,6 @@ import com.salesianostrian.dam.pastormolerogerman.Service.AlumnosService;
 import com.salesianostrian.dam.pastormolerogerman.Service.ClasesService;
 import com.salesianostrian.dam.pastormolerogerman.Service.IncidenciasService;
 import com.salesianostrian.dam.pastormolerogerman.Service.ProfesoresService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

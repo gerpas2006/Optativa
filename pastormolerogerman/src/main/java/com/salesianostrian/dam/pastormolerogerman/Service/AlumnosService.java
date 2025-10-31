@@ -1,7 +1,6 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
 import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
-import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IAlumnosRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,12 +36,6 @@ public class AlumnosService {
     }
 
     public void agregarAlumno(Alumnos alumnos){
-        // Asignar el profesor de la clase seleccionada
-        Clases clases = alumnos.getClases();
-        if (alumnos.getClases() != null) {
-            alumnos.setClases(alumnos.getClases());
-            clases.getListaAlumnos().add(alumnos);
-        }
         alumnosRepository.save(alumnos);
     }
 

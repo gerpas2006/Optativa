@@ -45,7 +45,7 @@
                         class="list-group-item list-group-item-action active bg-light text-primary border-0 fw-semibold rounded mb-1">
                         <i class="bi bi-people me-2"></i> Alumnos
                     </a>
-                    <a href="clases.html"
+                    <a th:href="@{/clases}"
                         class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
                         <i class="bi bi-building me-2"></i> Clases
                     </a>
@@ -126,19 +126,19 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-6 mb-3 mb-md-0">
-                                    <label for="profesor" class="form-label">Profesor</label>
-                                    <select class="form-select" id="profesor" th:field="*{profesor}">
-                                        <option th:each="profesor : ${profesores}" th:value="${profesor.id}"
-                                            th:text="${profesor.nombreProfesor + ' ' + profesor.apellidoProfesor}">
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
                                     <label for="clases" class="form-label">Clase</label>
                                     <select class="form-select" id="clases" th:field="*{clases}">
                                         <option th:each="clase : ${clases}" th:value="${clase.id}"
                                             th:text="${clase.nombreClase}"></option>
                                     </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="profesor" class="form-label">Profesor</label>
+                                    <input type="text" class="form-control bg-light" readonly 
+                                           th:value="${alumnos.clases != null && alumnos.clases.profesores != null ? alumnos.clases.profesores.nombreProfesor + ' ' + alumnos.clases.profesores.apellidoProfesor : 'Sin profesor'}">
+                                    <small class="text-muted">
+                                        <i class="bi bi-info-circle me-1"></i>Se asigna automáticamente según la clase
+                                    </small>
                                 </div>
                             </div>
 

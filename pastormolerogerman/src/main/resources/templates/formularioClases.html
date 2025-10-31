@@ -16,7 +16,7 @@
         </div>
 
         <div class="card-body">
-            <form th:action="${clases.id != null} ? @{/clases/editar} : @{/clases/guardar}"
+            <form th:action="${clases.id != null} ? @{/clases/editar} : @{/clases/agregar}"
                   th:object="${clases}" method="post">
 
                 <input type="hidden" th:field="*{id}"/>

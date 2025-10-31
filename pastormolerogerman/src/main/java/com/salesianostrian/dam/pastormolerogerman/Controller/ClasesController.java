@@ -57,7 +57,7 @@ public class ClasesController {
     @GetMapping("/clases/editar/{id}")
     public String editarClase(@PathVariable Long id,Model model){
         model.addAttribute("clases",clasesService.buscarPorId(id));
-        model.addAttribute("profesores",profesoresService.listarProfesores());
+        model.addAttribute("profesores",profesoresService.mostrarLosQueNoTienenCLases());
         return "formularioClases";
     }
 

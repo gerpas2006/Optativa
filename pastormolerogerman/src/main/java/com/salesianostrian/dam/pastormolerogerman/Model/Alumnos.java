@@ -34,9 +34,9 @@ public class Alumnos {
     private List<String> alergias;
 
 
-    @ManyToOne
-    @JoinColumn(name = "profesor_id")
-    private Profesores profesor;
+//    @ManyToOne
+//    @JoinColumn(name = "profesor_id")
+//    private Profesores profesor;
 
     @ManyToOne
     @JoinColumn(name = "clases_id")

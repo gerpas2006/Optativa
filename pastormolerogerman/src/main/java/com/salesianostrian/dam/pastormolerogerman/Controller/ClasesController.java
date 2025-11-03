@@ -1,17 +1,18 @@
 package com.salesianostrian.dam.pastormolerogerman.Controller;
 
-import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
-import com.salesianostrian.dam.pastormolerogerman.Model.Profesores;
-import com.salesianostrian.dam.pastormolerogerman.Service.AlumnosService;
-import com.salesianostrian.dam.pastormolerogerman.Service.ClasesService;
-import com.salesianostrian.dam.pastormolerogerman.Service.ProfesoresService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
+import com.salesianostrian.dam.pastormolerogerman.Service.AlumnosService;
+import com.salesianostrian.dam.pastormolerogerman.Service.ClasesService;
+import com.salesianostrian.dam.pastormolerogerman.Service.ProfesoresService;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
@@ -61,9 +62,9 @@ public class ClasesController {
         return "formularioClases";
     }
 
-    @PostMapping("/clases/editar")
-    public String editarClase(@ModelAttribute Clases clases,Long id){
-        clasesService.editarClase(clases);
+    @PostMapping("/clases/editar/{id}")
+    public String editarClase(@ModelAttribute Clases clases,@PathVariable Long id){
+        clasesService.editarClase(clases,id);
         return "redirect:/clases";
     }
 }

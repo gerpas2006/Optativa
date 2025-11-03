@@ -1,45 +1,58 @@
-INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) VALUES (1, '1985-06-12', 2200.50, NULL, '12345678', '600123456', 'González', '12345678A', 'maria.gonzalez@example.com', 'https://api.buscatuprofesor.es/tutor_avatar/kh/Ej/avatar/khEjplFbIlBk90ls2cZwR3zGtk4WNhKoJDRriDx6.jpg', 'María');
-INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) VALUES (2, '1990-02-20', 2100.00, NULL, '87654321', '600987654', 'Ramírez', '23456789B', 'carlos.ramirez@example.com', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvh6um8V55FQX7qsodoYAtBM9lYS_4KCjYA5PvbfcuDqnHRKOkrznfjUB63CScztMSd38&usqp=CAU', 'Carlos');
-INSERT INTO PROFESORES (ID, FECHA_NACIMIENTO, SUELDO, CLASES_ID, NUSS, TELEFONO, APELLIDO_PROFESOR, DNI, EMAIL, FOTO_PROFESOR, NOMBRE_PROFESOR) VALUES (3, '1982-11-05', 2300.00, NULL, '11223344', '600555444', 'Fernández', '34567890C', 'lucia.fernandez@example.com', 'https://c.superprof.com/i/m/12311634/600/20230912190530/12311634.webp', 'Lucía');
+-- Paso 1: Insertar Clases SIN profesor (para evitar referencia circular)
+INSERT INTO clases (id, nombre_clase) VALUES (1, 'Sala de Bebés');
+INSERT INTO clases (id, nombre_clase) VALUES (2, 'Sala de Gateadores');
+INSERT INTO clases (id, nombre_clase) VALUES (3, 'Sala de Exploradores');
+INSERT INTO clases (id, nombre_clase) VALUES (4, 'Sala de Preescolar A');
+INSERT INTO clases (id, nombre_clase) VALUES (5, 'Sala de Preescolar B');
 
-INSERT INTO CLASES (ID, PROFESOR_ID, NOMBRE_CLASE) VALUES (1, 1, '3 años');
-INSERT INTO CLASES (ID, PROFESOR_ID, NOMBRE_CLASE) VALUES (2, 2, '4 años');
-INSERT INTO CLASES (ID, PROFESOR_ID, NOMBRE_CLASE) VALUES (3, 3, '5 años');
+ALTER TABLE clases ALTER COLUMN id RESTART WITH 6;
 
-UPDATE PROFESORES SET CLASES_ID = 1 WHERE ID = 1;
-UPDATE PROFESORES SET CLASES_ID = 2 WHERE ID = 2;
-UPDATE PROFESORES SET CLASES_ID = 3 WHERE ID = 3;
+-- Paso 2: Insertar Profesores (ahora las clases ya existen)
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (100, 'Laura', 'Sánchez Morales', 'laura.sanchez@guarderia.com', 612345678, '12345678A', 123456789012, 1800.00, '1990-03-15', 'https://randomuser.me/api/portraits/women/10.jpg', 1);
+
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (2, 'Carmen', 'López Jiménez', 'carmen.lopez@guarderia.com', 623456789, '23456789B', 234567890123, 1850.00, '1988-07-22', 'https://randomuser.me/api/portraits/women/11.jpg', 2);
+
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (3, 'Isabel', 'Martín Torres', 'isabel.martin@guarderia.com', 634567890, '34567890C', 345678901234, 1900.00, '1985-11-08', 'https://randomuser.me/api/portraits/women/12.jpg', 3);
+
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (4, 'Rosa', 'García Ruiz', 'rosa.garcia@guarderia.com', 645678901, '45678901D', 456789012345, 1950.00, '1992-05-30', 'https://randomuser.me/api/portraits/women/13.jpg', 4);
+
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (5, 'Elena', 'Hernández Vega', 'elena.hernandez@guarderia.com', 656789012, '56789012E', 567890123456, 2000.00, '1989-09-12', 'https://randomuser.me/api/portraits/women/14.jpg', 5);
+
+ALTER TABLE profesores ALTER COLUMN id RESTART WITH 6;
 
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO,  CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (1, '2019-03-15', 1,'600111222', 'Martínez', '45678901A', 'ana.martinez.parent@example.com', 'https://www.eldivinopastor.com/wp-content/uploads/cuanto-tarda-un-nino-en-adaptarse-a-la-guarderia.jpg', 'Ana', '["gluten","lactosa"]');
+-- Insertar Alumnos (10 alumnos)
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (1, 'Sofía', 'Gómez Fernández', 'antonio.gomez@email.com', 611223344, '11223344A', 'https://ui-avatars.com/api/?name=Sofia+G&background=FFB6C1&color=fff&size=150&bold=true', '2023-05-10', 'Lactosa', 1);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (2, '2020-07-22', 2,'600222333', 'Sánchez', '56789012B', 'juan.sanchez.parent@example.com', 'https://letsfamily.es/wp-content/uploads/2019/07/guarderia-1.jpg', 'Juan', '["cacahuete"]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (2, 'Lucas', 'Rodríguez Moreno', 'miguel.rodriguez@email.com', 633445566, '22334455B', 'https://ui-avatars.com/api/?name=Lucas+R&background=87CEEB&color=fff&size=150&bold=true', '2022-08-15', NULL, 2);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (3, '2018-11-30',3,'600333444', 'López', '67890123C', 'maria.lopez.parent@example.com', 'https://guarderiajardilin.com/wp-content/uploads/2019/02/nina-guarderia.png', 'María', '["polen","levadura"]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (3, 'Emma', 'Álvarez Navarro', 'javier.alvarez@email.com', 655667788, '33445566C', 'https://ui-avatars.com/api/?name=Emma+A&background=DDA0DD&color=fff&size=150&bold=true', '2021-11-22', 'Frutos secos', 3);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (4, '2019-05-10', 1,'600444555', 'García', '78901234D', 'laura.garcia.parent@example.com', 'https://www.dzoom.org.es/wp-content/uploads/2019/03/5consejos-fotos-peques_portada-810x540.jpg', 'Laura', '["lactosa"]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (4, 'Hugo', 'Gómez Fernández', 'antonio.gomez@email.com', 611223344, '44556677D', 'https://ui-avatars.com/api/?name=Hugo+G&background=90EE90&color=fff&size=150&bold=true', '2020-03-08', NULL, 4);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (5, '2020-01-15', 2,'600555666', 'Torres', '89012345E', 'miguel.torres.parent@example.com', 'https://i.blogs.es/40fa63/nino-jugando/450_1000.jpg', 'Miguel', '[]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (5, 'Martina', 'Rodríguez Moreno', 'miguel.rodriguez@email.com', 633445566, '55667788E', 'https://ui-avatars.com/api/?name=Martina+R&background=F0E68C&color=fff&size=150&bold=true', '2019-06-30', 'Gluten', 5);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (6, '2018-09-12', 3,'600666777', 'Vega', '90123456F', 'sara.vega.parent@example.com', 'https://www.dzoom.org.es/wp-content/uploads/2019/02/5consejos-fotos-peques_peque-posando-734x486.jpg', 'Sara', '["gluten"]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (6, 'Daniel', 'Álvarez Navarro', 'javier.alvarez@email.com', 655667788, '66778899F', 'https://ui-avatars.com/api/?name=Daniel+A&background=FFA07A&color=fff&size=150&bold=true', '2023-01-12', NULL, 1);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (7, '2019-03-22', 1,'600777888', 'Ramos', '01234567G', 'david.ramos.parent@example.com', 'https://st2.depositphotos.com/6644020/11561/i/450/depositphotos_115616536-stock-photo-little-boy-smiling.jpg', 'David', '[]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (7, 'Valeria', 'Pérez Silva', 'lucia.fernandez@email.com', 622334455, '77889900A', 'https://ui-avatars.com/api/?name=Valeria+P&background=FF69B4&color=fff&size=150&bold=true', '2022-04-20', 'Polen', 2);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (8, '2020-06-18', 2,'600888999', 'Blanco', '12345678H', 'laia.blanco.parent@example.com', 'https://assets.oviahealth.com/wp-content/uploads/2021/04/article_101315.jpg', 'Laia', '["cacahuete"]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (8, 'Mateo', 'Castro Blanco', 'patricia.moreno@email.com', 644556677, '88990011B', 'https://ui-avatars.com/api/?name=Mateo+C&background=ADD8E6&color=fff&size=150&bold=true', '2021-09-05', NULL, 3);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (9, '2018-12-02', 3,'600999000', 'Molina', '23456789I', 'andres.molina.parent@example.com', 'https://i.blogs.es/bc9084/pexels-poppy-martinez-571476080-31528535/500_333.jpeg', 'Andrés', '[]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (9, 'Paula', 'Jiménez Ortiz', 'cristina.navarro@email.com', 666778899, '99001122C', 'https://ui-avatars.com/api/?name=Paula+J&background=E6E6FA&color=fff&size=150&bold=true', '2020-12-18', 'Huevo', 4);
 
-INSERT INTO ALUMNOS (ID, FECHA_NACIMIENTO, CLASES_ID,TELEFONO_CONTACTO, APELLIDO_ALUMNO, DNI, EMAIL_CONTACTO, FOTO_ALUMNO, NOMBRE_ALUMNO, ALERGIAS) VALUES (10, '2019-08-05', 1,'600111000', 'Morales', '34567890J', 'clara.morales.parent@example.com', 'https://st3.depositphotos.com/3584053/17886/i/450/depositphotos_178868438-stock-photo-happy-small-boy-on-green.jpg', 'Clara', '["lactosa"]');
+INSERT INTO alumnos (id, nombre_alumno, apellido_alumno, email_contacto, telefono_contacto, dni, foto_alumno, fecha_nacimiento, alergias, clases_id) VALUES (10, 'Diego', 'Ramos Gil', 'antonio.gomez@email.com', 611223344, '00112233D', 'https://ui-avatars.com/api/?name=Diego+R&background=98FB98&color=fff&size=150&bold=true', '2019-08-25', NULL, 5);
 
-ALTER TABLE ALUMNOS ALTER COLUMN ID RESTART WITH 11;
+ALTER TABLE alumnos ALTER COLUMN id RESTART WITH 11;
 
-ALTER TABLE CLASES ALTER COLUMN ID RESTART WITH 4;
+-- Insertar Incidencias (5 incidencias)
+INSERT INTO incidencias (id, fecha, descripcion, gravedad, resuelta, observaciones_resolucion) VALUES (1, '2024-01-15', 'Sofía tuvo una pequeña caída en el patio', 'Leve', true, 'Se aplicó hielo y se avisó a los padres. Sin consecuencias.');
 
-ALTER TABLE PROFESORES ALTER COLUMN ID RESTART WITH 4;
+INSERT INTO incidencias (id, fecha, descripcion, gravedad, resuelta, observaciones_resolucion) VALUES (2, '2024-01-16', 'Lucas presentó reacción alérgica leve durante la merienda', 'Moderada', true, 'Se administró antihistamínico y se contactó con los padres inmediatamente.');
 
-INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (0, '2025-10-23', 1, 'Corte pequeño en la mano izquierda; limpiada y vendada en enfermería. Se avisó a la familia.', 'MEDIA', NULL);
+INSERT INTO incidencias (id, fecha, descripcion, gravedad, resuelta, observaciones_resolucion) VALUES (3, '2024-01-17', 'Discusión entre Hugo y Mateo durante el juego libre', 'Leve', true, 'Se habló con ambos niños. Pidieron disculpas mutuamente.');
 
-INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, '2025-10-24', 2, 'Conflicto en el patio entre dos niños; mediación y seguimiento por el tutor.', 'BAJA', 'Padres informados; seguimiento en clase.');
+INSERT INTO incidencias (id, fecha, descripcion, gravedad, resuelta, observaciones_resolucion) VALUES (4, '2024-01-18', 'Emma se sintió mareada después de la actividad física', 'Moderada', true, 'Se le dio agua y descanso. Los padres fueron notificados.');
 
-INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, '2025-10-24', 3, 'Puerta del aula quedó entreabierta tras el recreo; cerrada y comprobado el mecanismo de cierre.', 'ALTA', 'Notificada dirección; revisado cierre y aplicada medida correctora.');
+INSERT INTO incidencias (id, fecha, descripcion, gravedad, resuelta, observaciones_resolucion) VALUES (5, '2024-01-19', 'Calefacción averiada en Sala de Preescolar B', 'Grave', false, 'Se ha contactado con mantenimiento. Pendiente de reparación.');
 
+ALTER TABLE incidencias ALTER COLUMN id RESTART WITH 6;

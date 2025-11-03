@@ -25,6 +25,7 @@ public class Alumnos {
     private String emailContacto;
     private Long telefonoContacto;
     private String dni;
+
     @Lob
     private String fotoAlumno;
 
@@ -32,11 +33,6 @@ public class Alumnos {
     private LocalDate fechaNacimiento;
 
     private List<String> alergias;
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "profesor_id")
-//    private Profesores profesor;
 
     @ManyToOne
     @JoinColumn(name = "clases_id")

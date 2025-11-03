@@ -45,4 +45,17 @@ public class ProfesoresController {
         profesoresService.agregarProfesor(profesores);
         return "redirect:/profesores";
     }
+
+    @GetMapping("/profesores/editar/{id}")
+    public String editarProfeor(@PathVariable Long id,Model model){
+        model.addAttribute("profesor", profesoresService.buscarPorId(id));
+        model.addAttribute("clases", clasesService.listarClases());
+        return "formularioProfesor";
+    }
+
+    @PostMapping("profesores/editar")
+    public String editarProfesores(@ModelAttribute Profesores profesores,Long id){
+        profesoresService.editarProfesor(profesores);
+        return "redirect:/profesores";
+    }
 }

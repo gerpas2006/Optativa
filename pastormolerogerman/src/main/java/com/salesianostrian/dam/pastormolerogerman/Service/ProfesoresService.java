@@ -58,4 +58,9 @@ public class ProfesoresService {
     public void agregarProfesor(Profesores profesores){
         profesoresRepository.save(profesores);
     }
+
+    public void editarProfesor(Profesores profesores){
+        profesoresRepository.save(profesores);
+    }
+
 }

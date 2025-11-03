@@ -127,9 +127,11 @@
                                                 th:attrappend="data-bs-target='#profesorModal' + ${profesor.id}">
                                                 Ver más
                                             </button>
+                                            <form th:action="@{/profesores/editar/{id}(id=${profesor.id})}" method="get">
                                             <button class="btn btn-outline-warning btn-sm">
                                                 <i class="bi bi-pencil-fill"></i> Modificar
                                             </button>
+                                            </form>
                                             <form th:action="@{/profesores/eliminar/{id}(id=${profesor.id})}" method="post"> 
                                             <button class="btn btn-outline-danger btn-sm" type="submit"
                                                 onclick="return confirm('¿Estás seguro de que quieres eliminar al profesor?')">

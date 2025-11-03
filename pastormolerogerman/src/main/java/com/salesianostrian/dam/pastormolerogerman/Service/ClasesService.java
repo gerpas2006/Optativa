@@ -1,15 +1,17 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
 import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
 import com.salesianostrian.dam.pastormolerogerman.Model.Profesores;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IClasesRepository;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IProfesoresRepository;
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -51,9 +53,26 @@ public class ClasesService {
         clasesRepository.save(clases);
     }
 
-    public void editarClase(Clases clases){
-        clasesRepository.save(clases);
+
+
+
+    public void editarClase(Clases clases,Long id){
+
+        Clases c = clasesRepository.findById(id).orElse(null);
+        c.setNombreClase(c.getNombreClase());
+        Profesores p;
+        if(c.getProfesores()!= null){
+            p = profesoresService.buscarPorId(id);
+            c.setProfesores(p);
+            p.setClases(c);
+        }else{
+            c.setNombreClase(null);
+        }        
+        clasesRepository.save(c);
     }
+
+
+
 
     public Clases buscarPorId(Long id){
         return clasesRepository.findById(id).orElse(null);

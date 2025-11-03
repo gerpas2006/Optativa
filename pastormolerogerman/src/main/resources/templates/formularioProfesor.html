@@ -75,6 +75,17 @@
                     <input type="text" id="fotoProfesor" th:field="*{fotoProfesor}" class="form-control">
                 </div>
 
+                <!-- Clase -->
+                <div class="mb-3">
+                    <label class="form-label">Clase</label>
+                    <div class="form-control" style="background-color: #f8f9fa; padding: 10px;">
+                        <ul class="list-unstyled mb-0">
+                            <li th:each="clase : *{clases}" th:text="${clase.nombreClase}"></li>
+                        </ul>
+                    </div>
+                    <small class="form-text text-muted">Para editar las clases, dirigirse a la página de Clases.</small>
+                </div>
+
                 <!-- Botones -->
                 <div class="text-end">
                     <a th:href="@{/profesores}" class="btn btn-secondary me-2">Cancelar</a>

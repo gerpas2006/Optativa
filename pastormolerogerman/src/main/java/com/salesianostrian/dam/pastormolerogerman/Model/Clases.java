@@ -1,9 +1,17 @@
 package com.salesianostrian.dam.pastormolerogerman.Model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
@@ -20,8 +28,7 @@ public class Clases {
     private String nombreClase;
 
 
-    @ManyToOne
-    @JoinColumn(name = "profesor_id")
+    @OneToOne(mappedBy = "clases")
     private Profesores profesores;
 
     @OneToMany(mappedBy = "clases")

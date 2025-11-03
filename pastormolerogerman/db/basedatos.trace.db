@@ -5218,3 +5218,19 @@ INSERT INTO CLASES (ID, NOMBRE_CLASE) VALUES (3, 3, '5 años') [21002-232]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
 	at com.salesianostrian.dam.pastormolerogerman.PastormolerogermanApplication.main(PastormolerogermanApplication.java:10)
+2025-11-03 19:17:03.003021+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE clases [*]COLUMN id RESTART WITH 6"; se esperaba "., ADD, SET, RENAME, DROP, ALTER"
+Syntax error in SQL statement "ALTER TABLE clases [*]COLUMN id RESTART WITH 6"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE clases COLUMN id RESTART WITH 6 [42001-232]
+2025-11-03 19:17:03.011970+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE profesores [*]COLUMN id RESTART WITH 6"; se esperaba "., ADD, SET, RENAME, DROP, ALTER"
+Syntax error in SQL statement "ALTER TABLE profesores [*]COLUMN id RESTART WITH 6"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE profesores COLUMN id RESTART WITH 6 [42001-232]
+2025-11-03 19:17:03.026278+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE alumnos [*]COLUMN id RESTART WITH 6"; se esperaba "., ADD, SET, RENAME, DROP, ALTER"
+Syntax error in SQL statement "ALTER TABLE alumnos [*]COLUMN id RESTART WITH 6"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE alumnos COLUMN id RESTART WITH 6 [42001-232]
+2025-11-03 19:17:03.027279+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE incidencias [*]COLUMN id RESTART WITH 6"; se esperaba "., ADD, SET, RENAME, DROP, ALTER"
+Syntax error in SQL statement "ALTER TABLE incidencias [*]COLUMN id RESTART WITH 6"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE incidencias COLUMN id RESTART WITH 6 [42001-232]

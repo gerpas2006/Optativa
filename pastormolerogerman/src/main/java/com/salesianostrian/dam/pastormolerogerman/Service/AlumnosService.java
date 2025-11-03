@@ -31,8 +31,7 @@ public class AlumnosService {
     }
 
     public Alumnos buscarPorDni(String dni){
-        List<Alumnos> lista = listarAlumnos();
-        return lista.stream().filter(alumno -> alumno.getDni().equalsIgnoreCase(dni)).findFirst().orElse(null);
+        return alumnosRepository.findByDni(dni);
     }
 
     public void agregarAlumno(Alumnos alumnos){

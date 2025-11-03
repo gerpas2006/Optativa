@@ -54,4 +54,8 @@ public class ProfesoresService {
         profesoresRepository.delete(p);
 
     }
+
+    public void agregarProfesor(Profesores profesores){
+        profesoresRepository.save(profesores);
+    }
 }

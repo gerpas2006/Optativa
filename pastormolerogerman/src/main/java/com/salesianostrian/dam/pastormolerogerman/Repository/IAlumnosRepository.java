@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface IAlumnosRepository extends JpaRepository<Alumnos,Long> {
 
+    public Alumnos findByDni(String dni);
+
+
 
 
 }

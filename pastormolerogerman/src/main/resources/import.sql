@@ -35,6 +35,8 @@ ALTER TABLE ALUMNOS ALTER COLUMN ID RESTART WITH 11;
 
 ALTER TABLE CLASES ALTER COLUMN ID RESTART WITH 4;
 
+ALTER TABLE PROFESORES ALTER COLUMN ID RESTART WITH 4;
+
 INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (0, '2025-10-23', 1, 'Corte pequeño en la mano izquierda; limpiada y vendada en enfermería. Se avisó a la familia.', 'MEDIA', NULL);
 
 INSERT INTO INCIDENCIAS (RESUELTA, FECHA, ID, DESCRIPCION, GRAVEDAD, OBSERVACIONES_RESOLUCION) VALUES (1, '2025-10-24', 2, 'Conflicto en el patio entre dos niños; mediación y seguimiento por el tutor.', 'BAJA', 'Padres informados; seguimiento en clase.');

@@ -43,8 +43,7 @@ public class ClasesService {
     }
 
     public Clases buscarUnaClase(String nombreClase){
-        List<Clases> lista = listarClases();
-        return lista.stream().filter(clases -> clases.getNombreClase().equalsIgnoreCase(nombreClase)).findFirst().orElse(null);
+        return clasesRepository.findByNombreClaseContainingIgnoreCase(nombreClase).get(0);
     }
 
     public void agregarClase(Clases clases){

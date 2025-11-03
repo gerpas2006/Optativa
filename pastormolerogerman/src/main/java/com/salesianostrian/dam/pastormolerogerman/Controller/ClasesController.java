@@ -62,7 +62,7 @@ public class ClasesController {
     }
 
     @PostMapping("/clases/editar")
-    public String editarClase(@ModelAttribute Clases clases){
+    public String editarClase(@ModelAttribute Clases clases,Long id){
         clasesService.editarClase(clases);
         return "redirect:/clases";
     }

@@ -2,6 +2,7 @@ package com.salesianostrian.dam.pastormolerogerman.Service;
 
 import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
 import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
+import com.salesianostrian.dam.pastormolerogerman.Model.Profesores;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IClasesRepository;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IProfesoresRepository;
 import jakarta.persistence.EntityNotFoundException;

@@ -26,8 +26,7 @@ public class AlumnosController {
         model.addAttribute("alumnos", new Alumnos());
         model.addAttribute("listarAlumnos", alumnosService.listarAlumnos());
         model.addAttribute("clases", clasesService.listarClases());
-//        model.addAttribute("profesores", profesoresService.listarProfesores());
-         return "alumnos";
+        return "alumnos";
     }
 
     @PostMapping("/alumnos/elimnar/{id}")

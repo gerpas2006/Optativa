@@ -1,8 +1,5 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
-import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
-import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
-import com.salesianostrian.dam.pastormolerogerman.Model.Incidencias;
 import com.salesianostrian.dam.pastormolerogerman.Model.Profesores;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IClasesRepository;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IProfesoresRepository;
@@ -34,11 +31,6 @@ public class ProfesoresService {
 
     }
 
-    public List<Profesores> mostrarLosQueNoTienenCLases(){
-        List<Profesores> lista= listarProfesores();
-        return lista.stream().filter(profesores-> profesores.getClases()==null).toList();
-    }
-
     public Profesores buscarPorId(Long id) {
         return profesoresRepository.findById(id).orElse(null);
     }
@@ -63,4 +55,7 @@ public class ProfesoresService {
         profesoresRepository.save(profesores);
     }
 
+    public Profesores buscarPorDni(String dni){
+        return profesoresRepository.findByDniContainingIgnoreCase(dni);
+    }
 }

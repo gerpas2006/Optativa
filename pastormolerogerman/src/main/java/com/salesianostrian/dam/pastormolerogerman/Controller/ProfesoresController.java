@@ -53,9 +53,17 @@ public class ProfesoresController {
         return "formularioProfesor";
     }
 
-    @PostMapping("profesores/editar")
+    @PostMapping("/profesores/editar")
     public String editarProfesores(@ModelAttribute Profesores profesores,Long id){
         profesoresService.editarProfesor(profesores);
         return "redirect:/profesores";
+    }
+
+    @GetMapping("/profesores/buscar")
+    public String buscarPorDni(Model model,String dni){
+        model.addAttribute("profesorBuscado", profesoresService.buscarPorDni(dni));
+        model.addAttribute("clases", clasesService.listarClases());
+        return "profesorBuscado";
+
     }
 }

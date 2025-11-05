@@ -79,7 +79,10 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-primary text-white"><i
                                             class="bi bi-search"></i></span>
-                                    <input type="text" class="form-control" placeholder="Buscar profesor por DNI">
+                                    <form th:action="@{/profesores/buscar}" method="get">
+                                        <input type="text" name="dni" class="form-control"
+                                            placeholder="Buscar profesor por DNI">
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +115,7 @@
                                             th:attrappend="data-bs-target='#profesorModalImg' + ${profesor.id}"
                                             aria-label="Ver imagen">
                                             <img th:src="${profesor.fotoProfesor}" alt="Foto" width="96" height="96"
-                                                class="rounded-3 shadow-sm img-fluid"
+                                                class="rounded-3 shadow-sm"
                                                 onerror="this.src='/static/images/default-avatar.png'">
                                         </button>
                                     </td>
@@ -164,7 +167,7 @@
                     <div class="modal-body">
                         <div class="text-center mb-4">
                             <img th:src="${profesor.fotoProfesor}" alt="Foto del profesor" width="240" height="240"
-                                class="rounded-circle img-fluid shadow-lg d-block mx-auto"
+                                class="rounded-circle shadow-lg d-block mx-auto"
                                 onerror="this.src='/static/images/default-avatar.png'">
                             <figcaption class="mt-3 text-center">
                                 <strong th:text="${profesor.nombreProfesor + ' ' + profesor.apellidoProfesor}"></strong>

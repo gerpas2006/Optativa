@@ -31,7 +31,7 @@ public class AlumnosService {
     }
 
     public Alumnos buscarPorDni(String dni){
-        return alumnosRepository.findByDni(dni);
+        return alumnosRepository.findByDniContainingIgnoreCase(dni);
     }
 
     public void agregarAlumno(Alumnos alumnos){

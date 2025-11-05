@@ -18,8 +18,6 @@ import lombok.RequiredArgsConstructor;
 public class ClasesService {
 
     private final IClasesRepository clasesRepository;
-    private final AlumnosService alumnosService;
-    private final ProfesoresService profesoresService;
     private final IProfesoresRepository iProfesoresRepository;
 
 
@@ -45,8 +43,8 @@ public class ClasesService {
         clasesRepository.delete(c);
     }
 
-    public Clases buscarUnaClase(String nombreClase){
-        return clasesRepository.findByNombreClaseContainingIgnoreCase(nombreClase).get(0);
+    public List<Clases> buscarUnaClase(String nombreClase){
+        return clasesRepository.findByNombreClaseContainingIgnoreCase(nombreClase);
     }
 
     public void agregarClase(Clases clases){
@@ -56,20 +54,29 @@ public class ClasesService {
 
 
 
-    public void editarClase(Clases clases,Long id){
+    public void editarClase(Clases clases){
+        Clases claseExistente = clasesRepository.findById(clases.getId()).orElseThrow(
+            () -> new EntityNotFoundException("No se ha encontrado la clase")
+        );
+        
+        claseExistente.setNombreClase(clases.getNombreClase());
 
-        Clases c = clasesRepository.findById(id).orElse(null);
-        c.setNombreClase(c.getNombreClase());
-        Profesores p;
-        if(c.getProfesores()!= null){
-            p = profesoresService.buscarPorId(id);
-            c.setProfesores(p);
-            p.setClases(c);
-        }else{
-            c.setNombreClase(null);
-        }        
-        clasesRepository.save(c);
-    }
+        // Si se asignó un profesor
+        if(clases.getProfesores() != null){
+            Profesores profesor = iProfesoresRepository.findById(clases.getProfesores().getId()).orElse(null);
+                if(claseExistente.getProfesores() != null){
+                    claseExistente.getProfesores().setClases(null);
+                }
+                // Asignar el nuevo profesor
+                claseExistente.setProfesores(profesor);
+                profesor.setClases(claseExistente);
+            }
+            clasesRepository.save(claseExistente);
+        }
+        
+        
+    
+
 
 
 

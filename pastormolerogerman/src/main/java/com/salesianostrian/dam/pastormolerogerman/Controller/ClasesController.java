@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
-import com.salesianostrian.dam.pastormolerogerman.Service.AlumnosService;
 import com.salesianostrian.dam.pastormolerogerman.Service.ClasesService;
 import com.salesianostrian.dam.pastormolerogerman.Service.ProfesoresService;
 
@@ -20,8 +19,6 @@ public class ClasesController {
 
     private final ClasesService clasesService;
     private final ProfesoresService profesoresService;
-    private final AlumnosService alumnosService;
-
 
     @GetMapping("/clases")
     public String listarClases(Model model){
@@ -58,13 +55,13 @@ public class ClasesController {
     @GetMapping("/clases/editar/{id}")
     public String editarClase(@PathVariable Long id,Model model){
         model.addAttribute("clases",clasesService.buscarPorId(id));
-        model.addAttribute("profesores",profesoresService.mostrarLosQueNoTienenCLases());
+        model.addAttribute("profesores",profesoresService.listarProfesores());
         return "formularioClases";
     }
 
-    @PostMapping("/clases/editar/{id}")
-    public String editarClase(@ModelAttribute Clases clases,@PathVariable Long id){
-        clasesService.editarClase(clases,id);
+    @PostMapping("/clases/editar")
+    public String editarClase(@ModelAttribute Clases clases){
+        clasesService.editarClase(clases);
         return "redirect:/clases";
     }
 }

@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IProfesoresRepository extends JpaRepository<Profesores,Long> {
 
+    public Profesores findByDniContainingIgnoreCase(String dni);
+
 }

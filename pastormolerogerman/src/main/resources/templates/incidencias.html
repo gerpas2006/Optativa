@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Incidencias - Guardería Infantil</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand fw-bold text-primary">
+                <i class="bi bi-house-heart-fill me-2"></i> Guardería Infantil
+            </span>
+            <div class="d-flex align-items-center">
+                <span class="text-muted small me-3">Bienvenido/a, <strong>Administrador</strong></span>
+                <i class="bi bi-person-circle fs-4 text-primary"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row vh-100">
+
+            <!-- Sidebar -->
+            <aside class="col-12 col-md-3 col-lg-2 bg-primary bg-opacity-75 text-white d-flex flex-column p-4">
+                <div class="mb-4">
+                    <h5 class="fw-bold mb-0">💫 Guardería Infantil</h5>
+                    <small class="text-light opacity-75">Sistema de Gestión</small>
+                </div>
+
+                <div class="list-group list-group-flush">
+                    <a th:href="@{/}"
+                        class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
+                        <i class="bi bi-grid-3x3-gap-fill me-2"></i> Dashboard
+                    </a>
+                    <a th:href="@{/alumnos}"
+                        class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
+                        <i class="bi bi-people me-2"></i> Alumnos
+                    </a>
+                    <a th:href="@{/clases}"
+                        class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
+                        <i class="bi bi-building me-2"></i> Clases
+                    </a>
+                    <a th:href="@{/profesores}"
+                        class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
+                        <i class="bi bi-person-badge me-2"></i> Profesores
+                    </a>
+                    <a th:href="@{/incidencias}"
+                        class="list-group-item list-group-item-action active bg-light text-primary border-0 fw-semibold rounded">
+                        <i class="bi bi-exclamation-triangle me-2"></i> Incidencias
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main content -->
+            <main class="col px-4 py-4 overflow-auto">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h4 class="fw-bold text-dark mb-1">Gestión de Incidencias</h4>
+                            <p class="text-muted mb-0">Registra y gestiona incidentes de la guardería</p>
+                        </div>
+                        <button class="btn btn-dark">
+                            <i class="bi bi-plus-lg me-1"></i> Nueva Incidencia
+                        </button>
+                    </div>
+
+                    <!-- Barra de búsqueda y filtros -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-md-4">
+                                    <h5 class="mb-0 fw-semibold">Lista de Incidencias</h5>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="bi bi-search text-muted"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-start-0" placeholder="Buscar...">
+                                        <button class="btn btn-primary">
+                                            <i class="bi bi-search me-1"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" onchange="location.href=this.value">
+                                        <option value="/incidencias" selected>Todas las incidencias</option>
+                                        <option value="/incidencia/filtrar/resueltas">Resueltas</option>
+                                        <option value="/incidencia/filtrar/noresueltas">No Resueltas</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lista de incidencias -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-0">
+                            <div th:each="incidencia : ${incidencias}" class="border-bottom p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="flex-grow-1">
+                                        <!-- Icono y fecha -->
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i th:if="${incidencia.resuelta}"
+                                                class="bi bi-check-circle-fill text-success fs-5 me-2"></i>
+                                            <i th:if="${!incidencia.resuelta && incidencia.observacionesResolucion != null}"
+                                                class="bi bi-clock text-warning fs-5 me-2"></i>
+                                            <i th:if="${!incidencia.resuelta && incidencia.observacionesResolucion == null}"
+                                                class="bi bi-exclamation-triangle text-danger fs-5 me-2"></i>
+
+                                            <span class="text-muted small"
+                                                th:text="${#temporals.format(incidencia.fecha, 'dd/MM/yyyy')}">
+                                            </span>
+                                        </div>
+
+                                        <!-- Descripción -->
+                                        <h6 class="fw-semibold mb-3" th:text="${incidencia.descripcion}"></h6>
+
+                                        <!-- Badges -->
+                                        <div class="mb-3">
+                                            <!-- Badge gravedad según atributo -->
+                                            <span
+                                                th:if="${incidencia.gravedad != null && incidencia.gravedad == 'Leve'}"
+                                                class="badge rounded-pill me-1"
+                                                style="background-color: #20c997; color: white;"
+                                                th:text="${incidencia.gravedad}"></span>
+                                            <span
+                                                th:if="${incidencia.gravedad != null && incidencia.gravedad == 'Moderada'}"
+                                                class="badge rounded-pill me-1"
+                                                style="background-color: #ffc107; color: white;"
+                                                th:text="${incidencia.gravedad}"></span>
+                                            <span
+                                                th:if="${incidencia.gravedad != null && incidencia.gravedad == 'Grave'}"
+                                                class="badge rounded-pill me-1 bg-danger text-white"
+                                                th:text="${incidencia.gravedad}"></span>
+                                        </div>
+
+                                        <!-- Observaciones -->
+                                        <p th:if="${incidencia.observacionesResolucion != null}"
+                                            class="text-muted mb-0 small"
+                                            th:text="${incidencia.observacionesResolucion}"></p>
+                                    </div>
+
+                                    <!-- Estado -->
+                                    <div class="ms-3">
+                                        <span th:if="${incidencia.resuelta}" class="badge bg-dark px-3 py-2"
+                                            th:text="'Resuelta'"></span>
+                                        <span th:if="${!incidencia.resuelta}"
+                                            class="badge bg-white text-dark border px-3 py-2"
+                                            th:text="'Pendiente'"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 🔹 Footer fijo inferior -->
+    <footer class="bg-white text-center text-muted py-3 border-top small">
+        © 2025 Guardería Infantil · Sistema de Gestión v1.0 · Todos los derechos reservados
+    </footer>
+
+
+</body>
+
+</html>

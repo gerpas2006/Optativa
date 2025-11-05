@@ -1,11 +1,13 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
-import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
-import com.salesianostrian.dam.pastormolerogerman.Repository.IAlumnosRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
+import com.salesianostrian.dam.pastormolerogerman.Repository.IAlumnosRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +42,11 @@ public class AlumnosService {
 
     public void editarAlumno(Alumnos alumnos){
         alumnosRepository.save(alumnos);
+    }
+
+    public List<Alumnos> mostrarSegunSuClase(Long clase_id){
+        List<Alumnos> lista = listarAlumnos();
+        return lista.stream().filter(alumnos -> alumnos.getClases() != null && alumnos.getClases().getId()==clase_id).toList();
     }
 
 }

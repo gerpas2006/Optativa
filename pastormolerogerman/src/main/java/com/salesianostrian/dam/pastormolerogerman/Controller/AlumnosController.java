@@ -1,15 +1,19 @@
 package com.salesianostrian.dam.pastormolerogerman.Controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
-import com.salesianostrian.dam.pastormolerogerman.Repository.IClasesRepository;
 import com.salesianostrian.dam.pastormolerogerman.Service.AlumnosService;
 import com.salesianostrian.dam.pastormolerogerman.Service.ClasesService;
 import com.salesianostrian.dam.pastormolerogerman.Service.IncidenciasService;
 import com.salesianostrian.dam.pastormolerogerman.Service.ProfesoresService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,7 +27,6 @@ public class AlumnosController {
 
     @GetMapping("/alumnos")
     public String mostrarAlumnos(Model model){
-        model.addAttribute("alumnos", new Alumnos());
         model.addAttribute("listarAlumnos", alumnosService.listarAlumnos());
         model.addAttribute("clases", clasesService.listarClases());
         return "alumnos";
@@ -67,9 +70,20 @@ public class AlumnosController {
     public String enviarEditarAlumno(@ModelAttribute Alumnos alumnos){
         alumnosService.editarAlumno(alumnos);
         return "redirect:/alumnos";
-
     }
 
+    @GetMapping("/alumnos/filtrar")
+    public String listarAlumnosSegunSuClase(Long claseId, Model model){
+        if (claseId != null) {
+            model.addAttribute("listarAlumnos", alumnosService.mostrarSegunSuClase(claseId));
+            model.addAttribute("claseSeleccionada", claseId);
+        } else {
+            model.addAttribute("listarAlumnos", alumnosService.listarAlumnos());
+            model.addAttribute("claseSeleccionada", null);
+        }
+        model.addAttribute("clases", clasesService.listarClases());
+        return "alumnos";
+    }
 
 
 }

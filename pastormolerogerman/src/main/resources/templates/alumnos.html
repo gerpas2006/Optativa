@@ -53,7 +53,7 @@
                         class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
                         <i class="bi bi-person-badge me-2"></i> Profesores
                     </a>
-                    <a href="incidencias.html"
+                    <a th:href="@{/incidencias}"
                         class="list-group-item list-group-item-action bg-transparent text-white border-0">
                         <i class="bi bi-exclamation-triangle me-2"></i> Incidencias
                     </a>
@@ -86,11 +86,14 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <select class="form-select">
-                                    <option selected disabled>Filtrar por clase</option>
-                                    <option th:each="clase : ${clases}" th:text="${clase.nombreClase}"
-                                        th:value="${clase}"></option>
-                                </select>
+                                <form th:action="@{/alumnos/filtrar}" method="get">
+                                    <select name="claseId" class="form-select" onchange="this.form.submit()">
+                                        <option value="" th:selected="${claseSeleccionada == null}">Mostrar todos</option>
+                                        <option th:each="clase : ${clases}" th:text="${clase.nombreClase}"
+                                            th:value="${clase.id}" 
+                                            th:selected="${claseSeleccionada != null && claseSeleccionada == clase.id}"></option>
+                                    </select>
+                                </form>
                             </div>
                         </div>
                     </div>

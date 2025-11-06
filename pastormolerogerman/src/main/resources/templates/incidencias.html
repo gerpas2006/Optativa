@@ -68,19 +68,23 @@
                             <h4 class="fw-bold text-dark mb-1">Gestión de Incidencias</h4>
                             <p class="text-muted mb-0">Registra y gestiona incidentes de la guardería</p>
                         </div>
-                        <button class="btn btn-dark">
-                            <i class="bi bi-plus-lg me-1"></i> Nueva Incidencia
-                        </button>
+                        <form th:action="@{/incidencias/agregar}">
+                            <button class="btn btn-dark">
+                                <i class="bi bi-plus-lg me-1"></i> Nueva Incidencia
+                            </button>
+                        </form>
                     </div>
 
-                    <!-- Barra de búsqueda y filtros -->
+                    <!-- Barra de búsqueda y filtros (sin JS ni CSS personalizado) -->
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body">
                             <div class="row g-3 align-items-center">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <h5 class="mb-0 fw-semibold">Lista de Incidencias</h5>
                                 </div>
-                                <div class="col-md-5">
+
+                                <!-- Buscar más a la izquierda: columna más estrecha para el título y input a continuación -->
+                                <div class="col-md-4">
                                     <div class="input-group">
                                         <span class="input-group-text bg-white border-end-0">
                                             <i class="bi bi-search text-muted"></i>
@@ -93,9 +97,9 @@
                                 </div>
                                 <div class="col-md-3">
                                     <select class="form-select" onchange="location.href=this.value">
-                                        <option value="/incidencias" selected>Todas las incidencias</option>
-                                        <option value="/incidencia/filtrar/resueltas">Resueltas</option>
-                                        <option value="/incidencia/filtrar/noresueltas">No Resueltas</option>
+                                        <option th:value="/incidencias" selected>Todas las incidencias</option>
+                                        <option th:value="/incidencia/filtrar/resueltas">Resueltas</option>
+                                        <option th:value="/incidencia/filtrar/noresueltas">No Resueltas</option>
                                     </select>
                                 </div>
                             </div>
@@ -150,13 +154,24 @@
                                             th:text="${incidencia.observacionesResolucion}"></p>
                                     </div>
 
-                                    <!-- Estado -->
-                                    <div class="ms-3">
-                                        <span th:if="${incidencia.resuelta}" class="badge bg-dark px-3 py-2"
-                                            th:text="'Resuelta'"></span>
-                                        <span th:if="${!incidencia.resuelta}"
-                                            class="badge bg-white text-dark border px-3 py-2"
-                                            th:text="'Pendiente'"></span>
+                                    <!-- Estado y acciones -->
+                                    <div class="ms-3 text-end d-flex flex-column align-items-end">
+                                        <div>
+                                            <span th:if="${incidencia.resuelta}" class="badge bg-dark px-3 py-2"
+                                                th:text="'Resuelta'"></span>
+                                            <span th:if="${!incidencia.resuelta}"
+                                                class="badge bg-white text-dark border px-3 py-2"
+                                                th:text="'Pendiente'"></span>
+                                        </div>
+
+                                        <!-- Botones de acción: Editar -->
+                                        <div class="mt-2">
+                                            <a th:href="@{/incidencias/editar/{id}(id=${incidencia.id})}"
+                                                class="btn btn-outline-warning btn-sm">
+                                                <i class="bi bi-pencil-fill"></i>
+                                                Editar
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

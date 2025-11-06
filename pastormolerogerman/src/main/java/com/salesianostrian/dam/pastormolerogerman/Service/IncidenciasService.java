@@ -30,13 +30,23 @@ public class IncidenciasService {
     }
 
     public List<Incidencias> devolverLasResueltas(){
-        List<Incidencias> lista = devolverTodasLasIncidencias();
-        return lista.stream().filter(incidencias -> incidencias.getResuelta()).toList();
+        return incidenciasRepository.findByResueltaTrue();
     }
 
     
     public List<Incidencias> devolverLasNoResueltas(){
-        List<Incidencias> lista = devolverTodasLasIncidencias();
-        return lista.stream().filter(incidencias -> incidencias.getResuelta() != true).toList();
+        return incidenciasRepository.findByResueltaFalse();
+    }
+
+    public void agregarIncidencia(Incidencias incidencias){
+        incidenciasRepository.save(incidencias);
+    }
+
+    public void editarIncidencia(Incidencias incidencias){
+        incidenciasRepository.save(incidencias);
+    }
+
+    public Incidencias buscarPorId(Long id){
+        return incidenciasRepository.findById(id).orElse(null);
     }
 }

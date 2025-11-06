@@ -39,7 +39,11 @@ public class ClasesService {
                 a.setClases(null);
             }
         }
-        c.getProfesores().setClases(null);
+        
+        if(c.getProfesores() != null){
+            c.getProfesores().setClases(null);
+        }
+        
         clasesRepository.delete(c);
     }
 

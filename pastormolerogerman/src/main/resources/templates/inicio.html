@@ -1,178 +1,104 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard - Guardería Infantil</title>
-
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body class="bg-light d-flex flex-column min-vh-100">
+<body>
 
-  <!-- 🔹 Navbar superior (siempre presente) -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
-    <div class="container-fluid">
-      <span class="navbar-brand fw-bold text-primary">
-        <i class="bi bi-house-heart-fill me-2"></i> Guardería Infantil
-      </span>
-      <div class="d-flex align-items-center">
-        <span class="text-muted small me-3">Bienvenido/a, <strong>Administrador</strong></span>
-        <i class="bi bi-person-circle fs-4 text-primary"></i>
-      </div>
-    </div>
-  </nav>
+  <!-- Navbar -->
+  <div th:replace="menu :: navbar"></div>
 
-  <div class="container-fluid flex-grow-1">
-    <div class="row h-100">
+  <div class="container-fluid">
+    <div class="row">
+      
       <!-- Sidebar -->
-      <aside class="col-12 col-md-3 col-lg-2 bg-primary bg-opacity-75 text-white d-flex flex-column p-4">
-        <div class="mb-4">
-          <h5 class="fw-bold mb-0">💫 Guardería Infantil</h5>
-          <small class="text-light opacity-75">Sistema de Gestión</small>
-        </div>
-
-        <div class="list-group list-group-flush">
-          <a th:href="@{/}" class="list-group-item list-group-item-action active bg-light text-primary border-0 fw-semibold rounded mb-1">
-            <i class="bi bi-grid-3x3-gap-fill me-2"></i> Dashboard
-          </a>
-          <a th:href="@{/alumnos}" class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
-            <i class="bi bi-people me-2"></i> Alumnos
-          </a>
-          <a th:href="@{/clases}" class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
-            <i class="bi bi-building me-2"></i> Clases
-          </a>
-          <a th:href="@{/profesores}" class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
-            <i class="bi bi-person-badge me-2"></i> Profesores
-          </a>
-          <a th:href="@{/incidencias}" class="list-group-item list-group-item-action bg-transparent text-white border-0">
-            <i class="bi bi-exclamation-triangle me-2"></i> Incidencias
-          </a>
-        </div>
-      </aside>
+      <div th:replace="menu :: sidebar"></div>
 
       <!-- Main content -->
-      <main class="col px-4 py-4 overflow-auto">
+      <main class="col-md-9 col-lg-10 p-4">
         
-        <!-- Tarjeta de bienvenida -->
-        <div class="card border-0 shadow-sm mb-4 bg-white">
-          <div class="card-body">
-            <h5 class="fw-semibold text-primary mb-2">
-              <i class="bi bi-stars me-2"></i> Bienvenido al Sistema de Gestión de la Guardería
-            </h5>
-            <p class="text-muted mb-0">
-              Aquí puedes consultar el estado general, los alumnos, profesores, clases e incidencias.  
-              Este panel muestra información clave y siempre se mantendrá visible al ingresar al sistema.
-            </p>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <h4 class="fw-bold text-primary mb-1">Dashboard</h4>
-          <div class="text-muted">Resumen general de la guardería</div>
-        </div>
+        <h4>Dashboard</h4>
+        <p class="text-muted">Resumen general de la guardería</p>
 
         <!-- Tarjetas resumen -->
-        <div class="row g-3 mb-4">
-          <div class="col-12 col-md-3">
-            <div class="card border-0 shadow-sm h-100 text-primary bg-white">
-              <div class="card-body d-flex justify-content-between align-items-center">
-                <div>
-                  <div class="small text-muted">Total Alumnos</div>
-                  <div class="fs-3 fw-bold"><span th:text="${contarAlumnos}"></span></div>
-                </div>
-                <i class="bi bi-people fs-1 text-primary opacity-75"></i>
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Alumnos</h5>
+                <p class="display-6" th:text="${contarAlumnos}"></p>
               </div>
             </div>
           </div>
-
-          <div class="col-12 col-md-3">
-            <div class="card border-0 shadow-sm h-100 text-info bg-white">
-              <div class="card-body d-flex justify-content-between align-items-center">
-                <div>
-                  <div class="small text-muted">Total Profesores</div>
-                  <div class="fs-3 fw-bold"><span th:text="${contarProfesores}"></span></div>
-                </div>
-                <i class="bi bi-person-badge fs-1 text-info opacity-75"></i>
+          <div class="col-md-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Profesores</h5>
+                <p class="display-6" th:text="${contarProfesores}"></p>
               </div>
             </div>
           </div>
-
-          <div class="col-12 col-md-3">
-            <div class="card border-0 shadow-sm h-100 text-danger bg-white">
-              <div class="card-body d-flex justify-content-between align-items-center">
-                <div>
-                  <div class="small text-muted">Total de Incidencias</div>
-                  <div class="fs-3 fw-bold"><span th:text="${contarIncidencias}"></span></div>
-                </div>
-                <i class="bi bi-exclamation-triangle fs-1 text-danger opacity-75"></i>
+          <div class="col-md-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Incidencias</h5>
+                <p class="display-6" th:text="${contarIncidencias}"></p>
               </div>
             </div>
           </div>
-
-          <div class="col-12 col-md-3">
-            <div class="card border-0 shadow-sm h-100 text-secondary bg-white">
-              <div class="card-body d-flex justify-content-between align-items-center">
-                <div>
-                  <div class="small text-muted">Total de Clases</div>
-                  <div class="fs-3 fw-bold"><span th:text="${contarClases}"></span></div>
-                </div>
-                <i class="bi bi-building fs-1 text-secondary opacity-75"></i>
+          <div class="col-md-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Clases</h5>
+                <p class="display-6" th:text="${contarClases}"></p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Panel con dos columnas -->
-        <div class="row g-4">
+        <!-- Profesores e Incidencias -->
+        <div class="row">
           
           <!-- Lista de Profesores -->
-          <div class="col-12 col-lg-6">
-            <div class="card border-0 shadow-sm">
-              <div class="card-header bg-primary bg-opacity-25 text-primary fw-semibold">
-                <i class="bi bi-person-lines-fill me-2"></i>
-                Algunos de los profesores registrados
+          <div class="col-lg-6 mb-4">
+            <div class="card">
+              <div class="card-header">
+                <i class="bi bi-person-lines-fill"></i> Profesores
               </div>
-              <div class="card-body bg-white">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item" th:each="profesores : ${algunosProfesores}">
-                    <div class="fw-semibold text-primary" th:text="${profesores.nombreProfesor + ' ' + profesores.apellidoProfesor}"></div>
-                    <div class="text-muted small">
-                      <i class="bi bi-envelope me-1"></i> <span th:text="${profesores.email}"></span><br>
-                      <i class="bi bi-telephone me-1"></i> <span th:text="${profesores.telefono}"></span><br>
-                      <i class="bi bi-person-vcard me-1"></i> <span th:text="${profesores.dni}"></span><br>
-                      <i class="bi bi-calendar-date me-1"></i> <span th:text="${profesores.fechaNacimiento}"></span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" th:each="profesores : ${algunosProfesores}">
+                  <strong th:text="${profesores.nombreProfesor + ' ' + profesores.apellidoProfesor}"></strong><br>
+                  <small th:text="${profesores.email}"></small><br>
+                  <small th:text="${profesores.telefono}"></small>
+                </li>
+              </ul>
             </div>
           </div>
 
           <!-- Tabla de Incidencias -->
-          <div class="col-12 col-lg-6">
-            <div class="card border-0 shadow-sm">
-              <div class="card-header bg-info bg-opacity-25 text-primary fw-semibold">
-                <i class="bi bi-exclamation-circle me-2"></i>
-                Algunas de las incidencias registradas
+          <div class="col-lg-6 mb-4">
+            <div class="card">
+              <div class="card-header">
+                <i class="bi bi-exclamation-circle"></i> Incidencias
               </div>
-              <div class="card-body bg-white">
-                <table class="table table-hover align-middle mb-0">
-                  <thead class="table-primary table-bordered border-light">
+              <div class="card-body">
+                <table class="table table-striped">
+                  <thead>
                     <tr>
                       <th>Descripción</th>
                       <th>Fecha</th>
                       <th>Gravedad</th>
-                      <th>Resolución</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr th:each="incidencias : ${algunasIncidencias}">
                       <td th:text="${incidencias.descripcion}"></td>
                       <td th:text="${incidencias.fecha}"></td>
-                      <td><span class="badge bg-light text-dark border" th:text="${incidencias.gravedad}"></span></td>
-                      <td th:text="${incidencias.observacionesResolucion}"></td>
+                      <td th:text="${incidencias.gravedad}"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -184,11 +110,6 @@
       </main>
     </div>
   </div>
-
-  <!-- 🔹 Footer fijo inferior -->
-  <footer class="bg-white text-center text-muted py-3 border-top small">
-    © 2025 Guardería Infantil · Sistema de Gestión v1.0 · Todos los derechos reservados
-  </footer>
 
 </body>
 </html>

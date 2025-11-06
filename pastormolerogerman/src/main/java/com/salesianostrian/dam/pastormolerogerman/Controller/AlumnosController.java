@@ -76,12 +76,11 @@ public class AlumnosController {
     public String listarAlumnosSegunSuClase(Long claseId, Model model){
         if (claseId != null) {
             model.addAttribute("listarAlumnos", alumnosService.mostrarSegunSuClase(claseId));
-            model.addAttribute("claseSeleccionada", claseId);
         } else {
             model.addAttribute("listarAlumnos", alumnosService.listarAlumnos());
-            model.addAttribute("claseSeleccionada", null);
         }
         model.addAttribute("clases", clasesService.listarClases());
+        model.addAttribute("claseSeleccionada", claseId);
         return "alumnos";
     }
 

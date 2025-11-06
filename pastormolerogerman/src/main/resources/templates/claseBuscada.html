@@ -2,230 +2,89 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resultado de búsqueda - Clases</title>
-
-    <!-- Bootstrap CSS y bootstrap-icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
-        <div class="container-fluid">
-            <span class="navbar-brand fw-bold text-primary">
-                <i class="bi bi-house-heart-fill me-2"></i> Guardería Infantil
-            </span>
-            <div class="d-flex align-items-center">
-                <span class="text-muted small me-3">Bienvenido/a, <strong>Administrador</strong></span>
-                <i class="bi bi-person-circle fs-4 text-primary"></i>
-            </div>
-        </div>
-    </nav>
+    <div th:replace="menu :: navbar"></div>
 
     <div class="container-fluid">
-        <div class="row vh-100">
+        <div class="row">
 
             <!-- Sidebar -->
-            <aside class="col-12 col-md-3 col-lg-2 bg-primary bg-opacity-75 text-white d-flex flex-column p-4">
-                <div class="mb-4">
-                    <h5 class="fw-bold mb-0">💫 Guardería Infantil</h5>
-                    <small class="text-light opacity-75">Sistema de Gestión</small>
-                </div>
-
-                <div class="list-group list-group-flush">
-                    <a th:href="@{/}"
-                        class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
-                        <i class="bi bi-grid-3x3-gap-fill me-2"></i> Dashboard
-                    </a>
-                    <a th:href="@{/alumnos}"
-                        class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
-                        <i class="bi bi-people me-2"></i> Alumnos
-                    </a>
-                    <a th:href="@{/clases}"
-                        class="list-group-item list-group-item-action active bg-light text-primary border-0 fw-semibold rounded mb-1">
-                        <i class="bi bi-building me-2"></i> Clases
-                    </a>
-                    <a th:href="@{/profesores}"
-                        class="list-group-item list-group-item-action bg-transparent text-white border-0 mb-1">
-                        <i class="bi bi-person-badge me-2"></i> Profesores
-                    </a>
-                    <a href="incidencias.html"
-                        class="list-group-item list-group-item-action bg-transparent text-white border-0">
-                        <i class="bi bi-exclamation-triangle me-2"></i> Incidencias
-                    </a>
-                </div>
-            </aside>
+            <div th:replace="menu :: sidebar"></div>
 
             <!-- Main content -->
-            <main class="col px-4 py-4 overflow-auto">
-                <div class="mb-4 d-flex justify-content-between align-items-center">
-                    <h4 class="fw-bold text-primary mb-0">Gestión de Clases</h4>
+            <main class="col-md-9 col-lg-10 p-4">
+                <div class="d-flex justify-content-between mb-3">
+                    <h4>Gestión de Clases</h4>
                     <form th:action="@{/clases/agregar}">
                         <button class="btn btn-success">
-                            <i class="bi bi-plus-circle-fill me-1"></i> Agregar Clase
+                            <i class="bi bi-plus-circle-fill"></i> Agregar Clase
                         </button>
                     </form>
                 </div>
 
-                <!-- Barra de búsqueda -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-body bg-white">
-                        <div class="row g-3 align-items-center">
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-text bg-primary text-white"><i
-                                            class="bi bi-search"></i></span>
-                                    <form th:action="@{/clases/buscada}" method="get">
-                                        <input type="text" name="nombreClase" class="form-control"
-                                            placeholder="Buscar clase por nombre">
-                                    </form>
-                                </div>
+                <!-- Búsqueda -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <form th:action="@{/clases/buscada}" method="get">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="text" name="nombreClase" class="form-control" placeholder="Buscar clase por nombre">
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
                 <!-- Tarjetas de clases -->
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-primary bg-opacity-25 text-primary fw-semibold">
-                        <i class="bi bi-building-fill me-2"></i> Resultado de Búsqueda
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-building-fill"></i> Resultado de Búsqueda
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body">
                         <div class="row g-3">
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="clase : ${claseBuscada}">
-                                <div class="card rounded-3 border shadow-sm h-100">
-                                    <div class="card-body p-2">
-                                        <div class="d-flex align-items-start">
-                                            <div class="me-2">
-                                                <div class="bg-white rounded-circle d-flex align-items-center justify-content-center"
-                                                    style="width:40px;height:40px;">
-                                                    <i class="bi bi-building fs-5 text-primary"></i>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex-grow-1">
-                                                <div class="d-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h6 class="card-title mb-0 text-truncate">Clase:
-                                                            <span th:text="${clase.nombreClase}"></span>
-                                                        </h6>
-                                                        <div class="text-muted small mt-1">
-                                                            Profesor:
-                                                            <span
-                                                                th:text="${clase.profesores != null ? clase.profesores.nombreProfesor + ' ' + clase.profesores.apellidoProfesor : 'Sin profesor asignado'}">
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="text-end">
-                                                        <div class="fw-semibold"
-                                                            th:text="${#lists.size(clase.listaAlumnos)}">
-                                                        </div>
-                                                        <div class="text-muted small">Alumnos</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mt-2">
-                                                    <div class="d-flex flex-wrap gap-1">
-                                                        <span class="badge bg-light text-dark border small"
-                                                            th:each="alumno : ${clase.listaAlumnos}"
-                                                            th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}">
-                                                        </span>
-                                                        <span class="badge bg-light text-dark border small"
-                                                            th:if="${#lists.isEmpty(clase.listaAlumnos)}">
-                                                            Sin alumnos
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                            <div class="col-md-4" th:each="clase : ${claseBuscada}">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${clase.nombreClase}"></h5>
+                                        <p class="card-text">
+                                            <strong>Profesor:</strong>
+                                            <span th:text="${clase.profesores != null ? clase.profesores.nombreProfesor + ' ' + clase.profesores.apellidoProfesor : 'Sin profesor'}"></span>
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Alumnos:</strong> <span th:text="${#lists.size(clase.listaAlumnos)}"></span>
+                                        </p>
+                                        <div class="mb-2">
+                                            <span class="badge bg-secondary me-1" th:each="alumno : ${clase.listaAlumnos}" 
+                                                th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"></span>
+                                            <span class="badge bg-light text-dark" th:if="${#lists.isEmpty(clase.listaAlumnos)}">Sin alumnos</span>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-secondary" data-bs-toggle="modal"
+                                                th:attr="data-bs-target=|#claseModal${clase.id}|">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <form th:action="@{/clases/editar/{id}(id=${clase.id})}" class="d-inline">
+                                                <button class="btn btn-sm btn-warning">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </button>
+                                            </form>
+                                            <form th:action="@{/clases/eliminar/{id}(id=${clase.id})}" method="post" class="d-inline">
+                                                <button onclick="return confirm('¿Eliminar clase?')" class="btn btn-sm btn-danger">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
-
-                                    <div
-                                        class="card-footer bg-white border-top-0 d-flex justify-content-end gap-1 py-1">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm p-1"
-                                            th:attr="data-bs-toggle='modal', data-bs-target=|#claseModal${clase.id}|">
-                                            <i class="bi bi-eye" style="font-size:0.9rem;"></i>
-                                        </button>
-
-
-                                        <form th:action="@{/clases/editar/{id}(id=${clase.id})}">
-                                            <button class="btn btn-outline-warning btn-sm p-1" type="submit"
-                                                title="Editar">
-                                                <i class="bi bi-pencil-fill" style="font-size:0.9rem;"></i>
-                                            </button>
-                                        </form>
-
-
-                                        <form th:action="@{/clases/eliminar/{id}(id=${clase.id})}" method="post">
-                                            <button
-                                                onclick="return confirm('¿Estás seguro de que quieres eliminar la clase?')"
-                                                class="btn btn-outline-danger btn-sm p-1" type="submit"
-                                                title="Eliminar">
-                                                <i class="bi bi-trash-fill" style="font-size:0.9rem;"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-
-                                    <!-- Modal Detalle -->
-                                    <div class="modal fade" th:id="|claseModal${clase.id}|" tabindex="-1"
-                                        th:attr="aria-labelledby=|claseModalLabel${clase.id}|" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title"
-                                                        th:text="${'Alumnos - ' + clase.nombreClase}">
-                                                        Alumnos - Clase</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Cerrar"></button>
-                                                </div>
-
-                                                <div class="modal-body">
-                                                    <div class="list-group">
-                                                        <div class="list-group-item"
-                                                            th:each="alumno : ${clase.listaAlumnos}">
-                                                            <div class="d-flex w-100 justify-content-between">
-                                                                <h6 class="mb-1"
-                                                                    th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}">
-                                                                    Nombre Apellido
-                                                                </h6>
-                                                            </div>
-                                                            <p class="mb-1"><strong>Alergias:</strong></p>
-                                                            <div class="d-flex flex-wrap gap-1">
-                                                                <span class="badge bg-light text-dark border small"
-                                                                    th:each="alergia : ${alumno.alergias}"
-                                                                    th:text="${alergia}"
-                                                                    th:if="${!#lists.isEmpty(alumno.alergias)}"></span>
-                                                                <span class="badge bg-light text-dark border small"
-                                                                    th:if="${#lists.isEmpty(alumno.alergias)}">No tiene
-                                                                    alergias</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="list-group-item text-center"
-                                                            th:if="${#lists.isEmpty(clase.listaAlumnos)}">
-                                                            <em>No hay alumnos en esta clase.</em>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Cerrar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /Modal -->
-
                                 </div>
                             </div>
-
                         </div>
                         <div th:if="${#lists.isEmpty(claseBuscada)}" class="text-center mt-5">
                             <h2>No se ha encontrado esa clase</h2>
@@ -236,13 +95,38 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS (necesario para modales, dropdowns, etc.) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Modales -->
+    <div th:each="clase : ${claseBuscada}">
+        <div class="modal fade" th:id="|claseModal${clase.id}|" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" th:text="${'Alumnos - ' + clase.nombreClase}"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" th:each="alumno : ${clase.listaAlumnos}">
+                                <h6 th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"></h6>
+                                <p><strong>Alergias:</strong></p>
+                                <span class="badge bg-secondary me-1" th:each="alergia : ${alumno.alergias}" 
+                                    th:text="${alergia}" th:if="${!#lists.isEmpty(alumno.alergias)}"></span>
+                                <span class="badge bg-light text-dark" th:if="${#lists.isEmpty(alumno.alergias)}">No tiene alergias</span>
+                            </li>
+                            <li class="list-group-item text-center" th:if="${#lists.isEmpty(clase.listaAlumnos)}">
+                                <em>No hay alumnos en esta clase.</em>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-white text-center text-muted py-3 border-top small mt-auto">
-        © 2025 Guardería Infantil · Sistema de Gestión v1.0 · Todos los derechos reservados
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

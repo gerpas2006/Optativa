@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<!-- Fragment: Navbar -->
+<nav th:fragment="navbar" class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <span class="navbar-brand fs-5">
+            <i class="bi bi-house-heart-fill"></i> Guardería Infantil
+        </span>
+        <span class="text-white">Bienvenido/a, Administrador</span>
+    </div>
+</nav>
+
+<!-- Fragment: Sidebar -->
+<nav th:fragment="sidebar" class="col-md-3 col-lg-2 bg-light sidebar min-vh-100">
+    <div class="p-3">
+        <h4 class="mb-3">Menú</h4>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a th:href="@{/}" class="nav-link fs-5">
+                    <i class="bi bi-grid-3x3-gap-fill me-2"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a th:href="@{/alumnos}" class="nav-link fs-5">
+                    <i class="bi bi-people me-2"></i> Alumnos
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a th:href="@{/clases}" class="nav-link fs-5">
+                    <i class="bi bi-building me-2"></i> Clases
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a th:href="@{/profesores}" class="nav-link fs-5">
+                    <i class="bi bi-person-badge me-2"></i> Profesores
+                </a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/incidencias}" class="nav-link fs-5">
+                    <i class="bi bi-exclamation-triangle me-2"></i> Incidencias
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

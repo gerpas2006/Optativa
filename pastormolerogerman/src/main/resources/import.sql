@@ -6,15 +6,15 @@ INSERT INTO clases (id, nombre_clase) VALUES (5, 'Sala de Preescolar B');
 
 ALTER TABLE clases ALTER COLUMN id RESTART WITH 6;
 
-INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (100, 'Laura', 'Sánchez Morales', 'laura.sanchez@guarderia.com', 612345678, '12345678A', 123456789012, 1800.00, '1990-03-15', 'https://randomuser.me/api/portraits/women/10.jpg', 1);
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id, fecha_incorporacion) VALUES (1, 'Carmen', 'López Jiménez', 'carmen.lopez@guarderia.com', 623456789, '23456789B', 234567890123, 1850.00, '1988-07-22', 'https://randomuser.me/api/portraits/women/11.jpg', 2, '2020-09-28');
 
-INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (2, 'Carmen', 'López Jiménez', 'carmen.lopez@guarderia.com', 623456789, '23456789B', 234567890123, 1850.00, '1988-07-22', 'https://randomuser.me/api/portraits/women/11.jpg', 2);
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id, fecha_incorporacion) VALUES (2, 'Isabel', 'Martín Torres', 'isabel.martin@guarderia.com', 634567890, '34567890C', 345678901234, 1900.00, '1985-11-08', 'https://randomuser.me/api/portraits/women/12.jpg', 3, '2021-10-09');
 
-INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (3, 'Isabel', 'Martín Torres', 'isabel.martin@guarderia.com', 634567890, '34567890C', 345678901234, 1900.00, '1985-11-08', 'https://randomuser.me/api/portraits/women/12.jpg', 3);
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id, fecha_incorporacion) VALUES (3, 'Rosa', 'García Ruiz', 'rosa.garcia@guarderia.com', 645678901, '45678901D', 456789012345, 1950.00, '1970-05-30', 'https://randomuser.me/api/portraits/women/13.jpg', 4, '1999-07-05');
 
-INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (4, 'Rosa', 'García Ruiz', 'rosa.garcia@guarderia.com', 645678901, '45678901D', 456789012345, 1950.00, '1992-05-30', 'https://randomuser.me/api/portraits/women/13.jpg', 4);
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id, fecha_incorporacion) VALUES (4, 'Elena', 'Hernández Vega', 'elena.hernandez@guarderia.com', 656789012, '56789012E', 567890123456, 2000.00, '1989-09-12', 'https://randomuser.me/api/portraits/women/14.jpg', 5, '2023-12-25');
 
-INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id) VALUES (5, 'Elena', 'Hernández Vega', 'elena.hernandez@guarderia.com', 656789012, '56789012E', 567890123456, 2000.00, '1989-09-12', 'https://randomuser.me/api/portraits/women/14.jpg', 5);
+INSERT INTO profesores (id, nombre_profesor, apellido_profesor, email, telefono, dni, nuss, sueldo, fecha_nacimiento, foto_profesor, clases_id, fecha_incorporacion) VALUES (5, 'Laura', 'Sánchez Morales', 'laura.sanchez@guarderia.com', 612345678, '12345678A', 123456789012, 1800.00, '1990-03-15', 'https://randomuser.me/api/portraits/women/10.jpg', 1, '2015-05-30');
 
 ALTER TABLE profesores ALTER COLUMN id RESTART WITH 6;
 

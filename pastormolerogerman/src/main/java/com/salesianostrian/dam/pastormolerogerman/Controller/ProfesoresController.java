@@ -28,6 +28,13 @@ public class ProfesoresController {
         return "profesores";
     }
 
+    @GetMapping("/profesores/buscar")
+    public String buscarPorDni(Model model,String dni){
+        model.addAttribute("profesorBuscado", profesoresService.buscarPorDni(dni));
+        model.addAttribute("clases", clasesService.listarClases());
+        return "profesorBuscado";
+    }
+
     @PostMapping("/profesores/eliminar/{id}")
     public String eliminarProfesor(@PathVariable Long id){
         profesoresService.eliminarProfesor(id);
@@ -58,5 +65,7 @@ public class ProfesoresController {
         profesoresService.editarProfesor(profesores);
         return "redirect:/profesores";
     }
+
+
 
 }

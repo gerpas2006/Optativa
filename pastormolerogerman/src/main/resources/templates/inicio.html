@@ -10,13 +10,13 @@
 <body>
 
   <!-- Navbar -->
-  <div th:replace="menu :: navbar"></div>
+  <div th:replace="~{menu :: navbar}"></div>
 
   <div class="container-fluid">
     <div class="row">
       
       <!-- Sidebar -->
-      <div th:replace="menu :: sidebar"></div>
+      <div th:replace="~{menu :: sidebar}"></div>
 
       <!-- Main content -->
       <main class="col-md-9 col-lg-10 p-4">

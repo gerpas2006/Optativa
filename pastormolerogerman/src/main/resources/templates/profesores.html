@@ -12,13 +12,13 @@
 <body>
 
     <!-- Navbar -->
-    <div th:replace="menu :: navbar"></div>
+    <div th:replace="~{menu :: navbar}"></div>
 
     <div class="container-fluid">
         <div class="row">
 
             <!-- Sidebar -->
-            <div th:replace="menu :: sidebar"></div>
+            <div th:replace="~{menu :: sidebar}"></div>
 
             <!-- Main content -->
             <main class="col-md-9 col-lg-10 p-4">
@@ -117,6 +117,7 @@
                             <li><strong>Email:</strong> <span th:text="${profesor.email}"></span></li>
                             <li><strong>Teléfono:</strong> <span th:text="${profesor.telefono}"></span></li>
                             <li><strong>Fecha Nacimiento:</strong> <span th:text="${profesor.fechaNacimiento}"></span></li>
+                            <li><strong>Fecha Incorporación:</strong> <span th:text="${profesor.fechaIncorporacion}"></span></li>
                             <li><strong>NUSS:</strong> <span th:text="${profesor.NUSS}"></span></li>
                             <li><strong>Sueldo:</strong> <span th:text="${profesor.sueldo + '€'}"></span></li>
                             <li><strong>Clase:</strong> <span th:text="${profesor.clases != null ? profesor.clases.nombreClase : 'Sin clase'}"></span></li>

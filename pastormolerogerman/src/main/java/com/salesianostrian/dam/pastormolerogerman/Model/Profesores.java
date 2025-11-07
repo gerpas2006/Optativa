@@ -31,6 +31,9 @@ public class Profesores {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaNacimiento;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaIncorporacion;
+
 
     @OneToOne
     @JoinColumn(name = "clases_id")

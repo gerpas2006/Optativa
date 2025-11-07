@@ -69,8 +69,8 @@
                                     <th>Foto</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
-                                    <th>Email</th>
-                                    <th>Teléfono</th>
+                                    <th>Email de contacto</th>
+                                    <th>Teléfono de contacto</th>
                                     <th>Clase</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -130,8 +130,8 @@
                         <img th:src="${alumno.fotoAlumno}" alt="Foto" width="150" height="150" class="rounded-circle mb-3">
                         <ul class="list-unstyled">
                             <li><strong>DNI:</strong> <span th:text="${alumno.dni}"></span></li>
-                            <li><strong>Email:</strong> <span th:text="${alumno.emailContacto}"></span></li>
-                            <li><strong>Teléfono:</strong> <span th:text="${alumno.telefonoContacto}"></span></li>
+                            <li><strong>Email de contacto:</strong> <span th:text="${alumno.emailContacto}"></span></li>
+                            <li><strong>Teléfono de contacto:</strong> <span th:text="${alumno.telefonoContacto}"></span></li>
                             <li><strong>Fecha Nacimiento:</strong> <span th:text="${alumno.fechaNacimiento}"></span></li>
                             <li><strong>Clase:</strong> <span th:text="${alumno.clases != null ? alumno.clases.nombreClase : 'Sin clase'}"></span></li>
                             <li>

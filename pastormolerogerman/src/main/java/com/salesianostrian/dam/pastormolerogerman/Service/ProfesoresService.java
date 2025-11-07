@@ -61,22 +61,5 @@ public class ProfesoresService {
         return profesoresRepository.findByDniContainingIgnoreCase(dni);
     }
 
-    public double gastoMedioDeSueldos(){
-        List<Profesores> profesores = listarProfesores();
-        double suma = 0;
-        suma = profesores.stream().mapToDouble(Profesores::getSueldo).sum();
-        return suma/profesores.size();
-    }
-
-    public double sueldoMasAlto(){
-        List<Profesores> profesores = listarProfesores();
-        return profesores.stream().mapToDouble(Profesores::getSueldo).max().orElse(0.0);
-    }
-
-    public double sueldoMasBajo(){
-        List<Profesores> profesores = listarProfesores();
-        return profesores.stream().mapToDouble(Profesores::getSueldo).min().orElse(0.0);
-    }
-
 
 }

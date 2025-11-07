@@ -55,9 +55,6 @@ public class ClasesService {
         clasesRepository.save(clases);
     }
 
-
-
-
     public void editarClase(Clases clases){
         Clases claseExistente = clasesRepository.findById(clases.getId()).orElseThrow(
             () -> new EntityNotFoundException("No se ha encontrado la clase")
@@ -65,7 +62,6 @@ public class ClasesService {
         
         claseExistente.setNombreClase(clases.getNombreClase());
 
-        // Si se asignó un profesor
         if(clases.getProfesores() != null){
             Profesores profesor = iProfesoresRepository.findById(clases.getProfesores().getId()).orElse(null);
                 if(claseExistente.getProfesores() != null){
@@ -77,13 +73,6 @@ public class ClasesService {
             }
             clasesRepository.save(claseExistente);
         }
-        
-        
-    
-
-
-
-
 
     public Clases buscarPorId(Long id){
         return clasesRepository.findById(id).orElse(null);

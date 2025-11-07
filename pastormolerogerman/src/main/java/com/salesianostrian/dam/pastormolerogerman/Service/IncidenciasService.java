@@ -32,7 +32,6 @@ public class IncidenciasService {
     public List<Incidencias> devolverLasResueltas(){
         return incidenciasRepository.findByResueltaTrue();
     }
-
     
     public List<Incidencias> devolverLasNoResueltas(){
         return incidenciasRepository.findByResueltaFalse();

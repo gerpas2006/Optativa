@@ -59,11 +59,4 @@ public class ProfesoresController {
         return "redirect:/profesores";
     }
 
-    @GetMapping("/profesores/buscar")
-    public String buscarPorDni(Model model,String dni){
-        model.addAttribute("profesorBuscado", profesoresService.buscarPorDni(dni));
-        model.addAttribute("clases", clasesService.listarClases());
-        return "profesorBuscado";
-
-    }
 }

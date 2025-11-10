@@ -9,4 +9,5 @@ public interface IProfesoresRepository extends JpaRepository<Profesores,Long> {
 
     public Profesores findByDniContainingIgnoreCase(String dni);
 
+
 }

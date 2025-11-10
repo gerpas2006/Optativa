@@ -16,10 +16,6 @@ public class AlumnosService {
 
     private final IAlumnosRepository alumnosRepository;
 
-    public List<Alumnos> listarTodos(){
-        return alumnosRepository.findAll();
-    }
-
     public Long contarAlumnos(){
         return alumnosRepository.count();
     }

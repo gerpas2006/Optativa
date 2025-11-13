@@ -63,20 +63,5 @@ public class EstadisticasService {
         return guardarProfesor;
     }
 
-    public Double sueldoConPlusPorAnosTrabajados(Long id){
-        Profesores profesor = profesoresService.buscarPorId(id);
-        double porcentaje = 15;
-        int aniosTrabajados = 20;
-        int anioActual = LocalDate.now().getYear();
-        int anioInc = profesor.getFechaIncorporacion().getYear();
-        int diferencia = anioActual - anioInc;
-        if (diferencia>aniosTrabajados) {
-            return (profesor.getSueldo()*porcentaje)/100;
-        }else {
-            return profesor.getSueldo();
-        }
-    }
-
-
 
 }

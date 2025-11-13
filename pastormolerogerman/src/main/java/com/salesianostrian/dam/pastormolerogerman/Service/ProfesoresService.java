@@ -1,5 +1,6 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -60,6 +61,21 @@ public class ProfesoresService {
     public Profesores buscarPorDni(String dni){
         return profesoresRepository.findByDniContainingIgnoreCase(dni);
     }
+
+    public Double sueldoConPlusPorAnosTrabajados(Long id){
+        Profesores profesor = buscarPorId(id);
+        double porcentaje = 15;
+        int aniosTrabajados = 20;
+        int anioActual = LocalDate.now().getYear();
+        int anioInc = profesor.getFechaIncorporacion().getYear();
+        int diferencia = anioActual - anioInc;
+        if (diferencia>aniosTrabajados) {
+            return (profesor.getSueldo()*porcentaje)/100;
+        }else {
+            return 0.0;
+        }
+    }
+
 
 
 }

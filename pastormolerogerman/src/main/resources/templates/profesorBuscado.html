@@ -132,7 +132,8 @@
                             <li><strong>Fecha Nacimiento:</strong> <span th:text="${profesor.fechaNacimiento}"></span></li>
                             <li><strong>Fecha Incorporación:</strong> <span th:text="${profesor.fechaIncorporacion}"></span></li>
                             <li><strong>NUSS:</strong> <span th:text="${profesor.NUSS}"></span></li>
-                            <li><strong>Sueldo:</strong> <span th:text="${profesor.sueldo + '€'}"></span></li>
+                            <li><strong>Plus por antiguedad: </strong><span th:text="${@profesoresService.sueldoConPlusPorAnosTrabajados(profesor.id) + '€'}"></span></li>
+                            <li><strong>Sueldo:</strong> <span th:text="${profesor.sueldo + ' + ' + @profesoresService.sueldoConPlusPorAnosTrabajados(profesor.id) + ' = ' + (profesor.sueldo + @profesoresService.sueldoConPlusPorAnosTrabajados(profesor.id)) + '€'}"></span></li>
                             <li><strong>Clase:</strong> <span th:text="${profesor.clases != null ? profesor.clases.nombreClase : 'Sin clase'}"></span></li>
                         </ul>
                     </div>

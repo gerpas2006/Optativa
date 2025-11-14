@@ -63,11 +63,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div th:each="alumnoMayor : ${alumnaMasGrande}">
-                                        <p class="mb-1"><strong>Nombre:</strong> <span
-                                                th:text="${alumnoMayor.nombreAlumno}"></span>
-                                        </p>
-                                        <p class="mb-0"><strong>Apellido:</strong> <span
-                                                th:text="${alumnoMayor.apellidoAlumno}"></span>
+                                        <p class="mb-0"><strong>Alumno/a:</strong>
+                                            <span
+                                                th:text="${alumnoMayor.nombreAlumno + ' ' + alumnoMayor.apellidoAlumno}"></span>
                                         </p>
                                     </div>
                                 </div>
@@ -81,11 +79,39 @@
                                 </div>
                                 <div class="card-body">
                                     <div th:each="profesorMayor : ${profesorMasGrande}">
-                                        <p class="mb-1"><strong>Nombre:</strong> <span
-                                                th:text="${profesorMayor.nombreProfesor}"></span>
+                                        <p class="mb-0"><strong>Profesor/a:</strong>
+                                            <span
+                                                th:text="${profesorMayor.nombreProfesor + ' ' + profesorMayor.apellidoProfesor}"></span>
                                         </p>
-                                        <p class="mb-0"><strong>Apellido:</strong> <span
-                                                th:text="${profesorMayor.apellidoProfesor}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Profesor/a Más Chico</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div th:each="profesorChico : ${profesorMasChico}">
+                                        <p class="mb-0"><strong>Profesor/a:</strong>
+                                            <span
+                                                th:text="${profesorChico.nombreProfesor + ' ' + profesorChico.apellidoProfesor}"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Alumno/a Más Chico</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div th:each="alumnoChico : ${alumnoMasChico}">
+                                        <p class="mb-0"><strong>Alumno/a:</strong>
+                                            <span
+                                                th:text="${alumnoChico.nombreAlumno + ' ' + alumnoChico.apellidoAlumno}"></span>
                                         </p>
                                     </div>
                                 </div>

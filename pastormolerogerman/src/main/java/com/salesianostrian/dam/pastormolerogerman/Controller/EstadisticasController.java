@@ -20,6 +20,8 @@ public class EstadisticasController {
         model.addAttribute("mediaDeSueldos", estadisticasService.gastoMedioDeSueldos());
         model.addAttribute("alumnaMasGrande", estadisticasService.alumnosMasGrande());
         model.addAttribute("profesorMasGrande", estadisticasService.profesorMasGrande());
+        model.addAttribute("profesorMasChico", estadisticasService.profesorMasPequeno());
+        model.addAttribute("alumnoMasChico", estadisticasService.alumnoMasPequeno());
         return "estadisticas";
     }
 }

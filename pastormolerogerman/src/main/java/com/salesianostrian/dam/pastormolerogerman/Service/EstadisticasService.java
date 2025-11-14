@@ -37,30 +37,52 @@ public class EstadisticasService {
         return profesores.stream().mapToDouble(Profesores::getSueldo).min().orElse(0.0);
     }
 
-    public List<Alumnos> alumnosMasGrande(){
+    public List<Alumnos> alumnosMasGrande() {
         List<Alumnos> listAlum = alumnosService.listarAlumnos();
-        listAlum = listAlum.stream().sorted(Comparator.comparing(Alumnos::getFechaNacimiento)).collect(Collectors.toList());
-        List<Alumnos> guardarAlumno = new ArrayList<>();
-        guardarAlumno.add(listAlum.getFirst());
-        listAlum.forEach(a -> {
-            if (a.getFechaNacimiento()== guardarAlumno.getFirst().getFechaNacimiento()){
-                guardarAlumno.add(a);
-            }
-        });
-        return guardarAlumno;
+        LocalDate fechaMasAntigua = listAlum.stream()
+                .map(Alumnos::getFechaNacimiento)
+                .min(LocalDate::compareTo)
+                .orElse(null);
+        return listAlum.stream()
+                .filter(a -> a.getFechaNacimiento().equals(fechaMasAntigua))
+                .collect(Collectors.toList());
     }
 
     public List<Profesores> profesorMasGrande(){
         List<Profesores> listProfesores = profesoresService.listarProfesores();
-        listProfesores = listProfesores.stream().sorted(Comparator.comparing(Profesores::getFechaNacimiento)).collect(Collectors.toList());
-        List<Profesores> guardarProfesor= new ArrayList<>();
-        guardarProfesor.add(listProfesores.getFirst());
-        listProfesores.forEach(p -> {
-            if (p.getFechaNacimiento() == guardarProfesor.getFirst().getFechaNacimiento()){
-                guardarProfesor.add(p);
-            }
-        });
-        return guardarProfesor;
+        LocalDate fechaMasAntigua = listProfesores
+                .stream()
+                .map(Profesores::getFechaNacimiento)
+                .min(LocalDate::compareTo)
+                .orElse(null);
+
+        return listProfesores.stream()
+                .filter(p -> p.getFechaNacimiento().equals(fechaMasAntigua))
+                .collect(Collectors.toList());
+    }
+
+    public List<Alumnos> alumnoMasPequeno(){
+        List<Alumnos> listarAlumnos = alumnosService.listarAlumnos();
+
+        LocalDate fechaMasChica = listarAlumnos.stream()
+                .map(Alumnos::getFechaNacimiento)
+                .max(LocalDate::compareTo).orElse(null);
+        return listarAlumnos.stream()
+                .filter(a -> a.getFechaNacimiento()
+                        .equals(fechaMasChica))
+                .collect(Collectors.toList());
+    }
+
+    public List<Profesores> profesorMasPequeno(){
+        List<Profesores> listarProfesores= profesoresService.listarProfesores();
+
+        LocalDate fechaMasChica = listarProfesores.stream()
+                .map(Profesores::getFechaNacimiento)
+                .max(LocalDate::compareTo)
+                .orElse(null);
+        return listarProfesores.stream()
+                .filter(p -> p.getFechaNacimiento().equals(fechaMasChica))
+                .collect(Collectors.toList());
     }
 
 

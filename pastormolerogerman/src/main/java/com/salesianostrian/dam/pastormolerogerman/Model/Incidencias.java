@@ -23,6 +23,7 @@ public class Incidencias {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fecha;
 
+
     private String descripcion;
 
     private String gravedad;

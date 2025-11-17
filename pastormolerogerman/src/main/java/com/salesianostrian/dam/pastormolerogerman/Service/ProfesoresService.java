@@ -76,8 +76,28 @@ public class ProfesoresService {
         }
     }
 
+    public Double sueldoSinIrpf(Long id) {
+        Profesores p = buscarPorId(id);
+        double sueldoMensualBruto = p.getSueldo();
+        int mesesAnio = 12;
+        double sueldoAnualBruto = sueldoMensualBruto * mesesAnio;
+        double irpfAplicable = 0.0;
 
+        if (sueldoAnualBruto < 12.450) {
+            irpfAplicable = 0.0;
+        } else if (sueldoAnualBruto >= 12.450 && sueldoAnualBruto < 20.200) {
+            irpfAplicable = 0.19;
+        } else if (sueldoAnualBruto >= 20.200 && sueldoAnualBruto < 35.200) {
+            irpfAplicable = 0.24;
+        } else if (sueldoAnualBruto >= 35.200 && sueldoAnualBruto < 60.000) {
+            irpfAplicable = 0.30;
+        } else {
+            irpfAplicable = 0.37; 
+        }
 
+        double retencionMensual = sueldoMensualBruto * irpfAplicable;
+        double sueldoMensualNeto = sueldoMensualBruto - retencionMensual;
 
-
+        return sueldoMensualNeto;
+    }
 }

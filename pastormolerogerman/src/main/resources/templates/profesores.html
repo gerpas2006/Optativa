@@ -121,6 +121,7 @@
                             <li><strong>NUSS:</strong> <span th:text="${profesor.NUSS}"></span></li>
                             <li><strong>Plus por antiguedad: </strong><span th:text="${@profesoresService.sueldoConPlusPorAnosTrabajados(profesor.id) + '€'}"></span></li>
                             <li><strong>Sueldo:</strong> <span th:text="${profesor.sueldo + ' + ' + @profesoresService.sueldoConPlusPorAnosTrabajados(profesor.id) + ' = ' + (profesor.sueldo + @profesoresService.sueldoConPlusPorAnosTrabajados(profesor.id)) + '€'}"></span></li>
+                            <li><strong>Sueldo sin IRPF:</strong> <span th:text="${@profesoresService.sueldoSinIrpf(profesor.id)}"></span></li>
                             <li><strong>Clase:</strong> <span th:text="${profesor.clases != null ? profesor.clases.nombreClase : 'Sin clase'}"></span></li>
                         </ul>
                     </div>

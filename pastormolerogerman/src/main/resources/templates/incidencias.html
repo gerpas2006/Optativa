@@ -106,6 +106,12 @@
 
                                     <h6 th:text="${incidencia.descripcion}"></h6>
 
+                                    <p class="text-muted small mb-2">
+                                        <i class="bi bi-person-fill"></i>
+                                        <strong>Alumno:</strong> 
+                                        <span th:text="${incidencia.alumno != null ? incidencia.alumno.nombreAlumno + ' ' + incidencia.alumno.apellidoAlumno : 'Sin asignar'}"></span>
+                                    </p>
+
                                     <div class="mb-2">
                                         <span th:if="${incidencia.gravedad == 'Leve'}" class="badge bg-success"
                                             th:text="${incidencia.gravedad}"></span>

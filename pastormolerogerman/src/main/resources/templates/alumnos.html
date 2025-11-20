@@ -72,6 +72,7 @@
                                     <th>Email de contacto</th>
                                     <th>Teléfono de contacto</th>
                                     <th>Clase</th>
+                                    <th>Incidencias</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -90,6 +91,9 @@
                                     <td th:text="${alumno.emailContacto}"></td>
                                     <td th:text="${alumno.telefonoContacto}"></td>
                                     <td th:text="${alumno.clases != null ? alumno.clases.nombreClase : 'Sin clase'}"></td>
+                                    <td>
+                                        <span class="badge bg-warning" th:text="${alumno.incidencias != null ? alumno.incidencias.size() : 0}"></span>
+                                    </td>
                                     <td>
                                         <button class="btn btn-sm btn-success" data-bs-toggle="modal"
                                             th:attrappend="data-bs-target='#alumnoModal' + ${alumno.id}">
@@ -127,23 +131,34 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body text-center">
-                        <img th:src="${alumno.fotoAlumno}" alt="Foto" width="150" height="150" class="rounded-circle mb-3">
-                        <ul class="list-unstyled">
-                            <li><strong>DNI:</strong> <span th:text="${alumno.dni}"></span></li>
-                            <li><strong>Email de contacto:</strong> <span th:text="${alumno.emailContacto}"></span></li>
-                            <li><strong>Teléfono de contacto:</strong> <span th:text="${alumno.telefonoContacto}"></span></li>
-                            <li><strong>Fecha Nacimiento:</strong> <span th:text="${alumno.fechaNacimiento}"></span></li>
-                            <li><strong>Clase:</strong> <span th:text="${alumno.clases != null ? alumno.clases.nombreClase : 'Sin clase'}"></span></li>
-                            <li>
-                                <strong>Alergias:</strong>
-                                <span th:each="alergia : ${alumno.alergias}" th:text="${alergia}" class="badge bg-secondary me-1" th:if="${!#lists.isEmpty(alumno.alergias)}"></span>
-                                <span th:if="${#lists.isEmpty(alumno.alergias)}">Ninguna</span>
-                            </li>
-                            <li>
-                                <strong>Profesor:</strong>
-                                <span th:text="${alumno.clases != null and alumno.clases.profesores != null ? alumno.clases.profesores.nombreProfesor + ' ' + alumno.clases.profesores.apellidoProfesor : 'Sin profesor'}"></span>
-                            </li>
-                        </ul>
+                        <img th:src="${alumno.fotoAlumno}" alt="Foto" width="150" height="150" class="rounded-circle mb-3 border border-3 border-primary">
+                        <h5 class="mb-3" th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"></h5>
+                        
+                        <div class="row text-start">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-card-text text-primary"></i> <strong>DNI:</strong> <span th:text="${alumno.dni}"></span></li>
+                                    <li class="mb-2"><i class="bi bi-envelope text-primary"></i> <strong>Email:</strong> <br><small th:text="${alumno.emailContacto}"></small></li>
+                                    <li class="mb-2"><i class="bi bi-telephone text-primary"></i> <strong>Teléfono:</strong> <span th:text="${alumno.telefonoContacto}"></span></li>
+                                    <li class="mb-2"><i class="bi bi-cake text-primary"></i> <strong>Fecha Nac.:</strong> <span th:text="${#temporals.format(alumno.fechaNacimiento, 'dd/MM/yyyy')}"></span></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="bi bi-building text-success"></i> <strong>Clase:</strong> <br><span class="badge bg-info" th:text="${alumno.clases != null ? alumno.clases.nombreClase : 'Sin clase'}"></span></li>
+                                    <li class="mb-2"><i class="bi bi-person-badge text-success"></i> <strong>Profesor:</strong> <br><span th:text="${alumno.clases != null and alumno.clases.profesores != null ? alumno.clases.profesores.nombreProfesor + ' ' + alumno.clases.profesores.apellidoProfesor : 'Sin profesor'}"></span></li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-heart-pulse text-danger"></i> <strong>Alergias:</strong><br>
+                                        <span th:each="alergia : ${alumno.alergias}" th:text="${alergia}" class="badge bg-danger me-1" th:if="${!#lists.isEmpty(alumno.alergias)}"></span>
+                                        <span th:if="${#lists.isEmpty(alumno.alergias)}" class="badge bg-success">Ninguna</span>
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-exclamation-triangle text-warning"></i> <strong>Incidencias:</strong>
+                                        <span class="badge" th:classappend="${alumno.incidencias != null && alumno.incidencias.size() > 3 ? 'bg-danger' : 'bg-warning'}" th:text="${alumno.incidencias != null ? alumno.incidencias.size() : 0}"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

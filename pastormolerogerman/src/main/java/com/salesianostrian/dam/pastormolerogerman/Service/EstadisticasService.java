@@ -1,16 +1,17 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
+import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
 import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
 import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
 import com.salesianostrian.dam.pastormolerogerman.Model.Profesores;
-import com.salesianostrian.dam.pastormolerogerman.Repository.IProfesoresRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.*;
-import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 
 
 @Service
@@ -98,6 +99,18 @@ public class EstadisticasService {
         double suma = 0;
         suma = clases.stream().mapToDouble(c -> c.getListaAlumnos().size()).sum();
         return suma/clases.size();
+    }
+
+    public List<Alumnos> alumnosConMasIncidencias(){
+        List<Alumnos> alumnos = alumnosService.listarAlumnos();
+        int maxIncidencias = alumnos.stream()
+                .mapToInt(a -> a.getIncidencias().size())
+                .max()
+                .orElse(0);
+
+        return alumnos.stream()
+                .filter(a -> a.getIncidencias().size() == maxIncidencias)
+                .collect(Collectors.toList());
     }
 
 

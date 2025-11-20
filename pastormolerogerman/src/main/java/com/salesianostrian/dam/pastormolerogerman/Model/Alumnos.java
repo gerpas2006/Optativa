@@ -1,11 +1,24 @@
 package com.salesianostrian.dam.pastormolerogerman.Model;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
@@ -37,5 +50,8 @@ public class Alumnos {
     @ManyToOne
     @JoinColumn(name = "clases_id")
     private Clases clases;
+
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
+    private List<Incidencias> incidencias;
 
 }

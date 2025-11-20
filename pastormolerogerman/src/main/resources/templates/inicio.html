@@ -27,36 +27,48 @@
         <!-- Tarjetas resumen -->
         <div class="row mb-4">
           <div class="col-md-3">
-            <div class="card text-center">
-              <div class="card-body">
-                <h5 class="card-title">Alumnos</h5>
-                <p class="display-6" th:text="${contarAlumnos}"></p>
+            <a th:href="@{/alumnos}" class="text-decoration-none">
+              <div class="card text-center bg-primary text-white shadow-sm">
+                <div class="card-body">
+                  <i class="bi bi-people-fill" style="font-size: 3rem;"></i>
+                  <h5 class="card-title mt-2">Alumnos</h5>
+                  <p class="display-4 fw-bold" th:text="${contarAlumnos}"></p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
           <div class="col-md-3">
-            <div class="card text-center">
-              <div class="card-body">
-                <h5 class="card-title">Profesores</h5>
-                <p class="display-6" th:text="${contarProfesores}"></p>
+            <a th:href="@{/profesores}" class="text-decoration-none">
+              <div class="card text-center bg-success text-white shadow-sm">
+                <div class="card-body">
+                  <i class="bi bi-person-badge-fill" style="font-size: 3rem;"></i>
+                  <h5 class="card-title mt-2">Profesores</h5>
+                  <p class="display-4 fw-bold" th:text="${contarProfesores}"></p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
           <div class="col-md-3">
-            <div class="card text-center">
-              <div class="card-body">
-                <h5 class="card-title">Incidencias</h5>
-                <p class="display-6" th:text="${contarIncidencias}"></p>
+            <a th:href="@{/incidencias}" class="text-decoration-none">
+              <div class="card text-center bg-warning text-dark shadow-sm">
+                <div class="card-body">
+                  <i class="bi bi-exclamation-triangle-fill" style="font-size: 3rem;"></i>
+                  <h5 class="card-title mt-2">Incidencias</h5>
+                  <p class="display-4 fw-bold" th:text="${contarIncidencias}"></p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
           <div class="col-md-3">
-            <div class="card text-center">
-              <div class="card-body">
-                <h5 class="card-title">Clases</h5>
-                <p class="display-6" th:text="${contarClases}"></p>
+            <a th:href="@{/clases}" class="text-decoration-none">
+              <div class="card text-center bg-info text-white shadow-sm">
+                <div class="card-body">
+                  <i class="bi bi-building-fill" style="font-size: 3rem;"></i>
+                  <h5 class="card-title mt-2">Clases</h5>
+                  <p class="display-4 fw-bold" th:text="${contarClases}"></p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -82,13 +94,14 @@
           <!-- Tabla de Incidencias -->
           <div class="col-lg-6 mb-4">
             <div class="card">
-              <div class="card-header">
-                <i class="bi bi-exclamation-circle"></i> Incidencias
+              <div class="card-header bg-warning">
+                <i class="bi bi-exclamation-circle"></i> Últimas Incidencias
               </div>
               <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-hover">
                   <thead>
                     <tr>
+                      <th>Alumno</th>
                       <th>Descripción</th>
                       <th>Fecha</th>
                       <th>Gravedad</th>
@@ -96,9 +109,18 @@
                   </thead>
                   <tbody>
                     <tr th:each="incidencias : ${algunasIncidencias}">
-                      <td th:text="${incidencias.descripcion}"></td>
-                      <td th:text="${incidencias.fecha}"></td>
-                      <td th:text="${incidencias.gravedad}"></td>
+                      <td>
+                        <small th:text="${incidencias.alumno != null ? incidencias.alumno.nombreAlumno : 'N/A'}"></small>
+                      </td>
+                      <td>
+                        <small th:text="${#strings.abbreviate(incidencias.descripcion, 30)}"></small>
+                      </td>
+                      <td><small th:text="${#temporals.format(incidencias.fecha, 'dd/MM')}"></small></td>
+                      <td>
+                        <span th:if="${incidencias.gravedad == 'Leve'}" class="badge bg-success">Leve</span>
+                        <span th:if="${incidencias.gravedad == 'Moderada'}" class="badge bg-warning">Moderada</span>
+                        <span th:if="${incidencias.gravedad == 'Grave'}" class="badge bg-danger">Grave</span>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

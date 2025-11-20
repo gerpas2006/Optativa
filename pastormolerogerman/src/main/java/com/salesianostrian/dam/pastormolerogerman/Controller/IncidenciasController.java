@@ -1,22 +1,24 @@
 package com.salesianostrian.dam.pastormolerogerman.Controller;
 
-import com.salesianostrian.dam.pastormolerogerman.Model.Incidencias;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.salesianostrian.dam.pastormolerogerman.Service.IncidenciasService;
-
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.salesianostrian.dam.pastormolerogerman.Model.Incidencias;
+import com.salesianostrian.dam.pastormolerogerman.Service.AlumnosService;
+import com.salesianostrian.dam.pastormolerogerman.Service.IncidenciasService;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
 public class IncidenciasController {
 
     private final IncidenciasService incidenciasService;
+    private final AlumnosService alumnosService;
 
     @GetMapping("/incidencias")
     public String listarIncidencias(Model model) {
@@ -45,6 +47,7 @@ public class IncidenciasController {
     @GetMapping("/incidencias/agregar")
     public String agregarIncidencia(Model model) {
         model.addAttribute("incidencia", new Incidencias());
+        model.addAttribute("alumnos", alumnosService.listarAlumnos());
         return "formularioIncidencia";
     }
 
@@ -57,6 +60,7 @@ public class IncidenciasController {
     @GetMapping("/incidencias/editar/{id}")
     public String editarIncidencia(@PathVariable Long id, Model model) {
         model.addAttribute("incidencia", incidenciasService.buscarPorId(id));
+        model.addAttribute("alumnos", alumnosService.listarAlumnos());
         return "formularioIncidencia";
     }
 

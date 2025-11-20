@@ -1,11 +1,12 @@
 package com.salesianostrian.dam.pastormolerogerman.Controller;
 
-import com.salesianostrian.dam.pastormolerogerman.Service.EstadisticasService;
-import com.salesianostrian.dam.pastormolerogerman.Service.ProfesoresService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.salesianostrian.dam.pastormolerogerman.Service.EstadisticasService;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,6 +25,7 @@ public class EstadisticasController {
         model.addAttribute("alumnoMasChico", estadisticasService.alumnoMasPequeno());
         model.addAttribute("profesoresQueMasCobran", estadisticasService.profesoresQueMasCobran());
         model.addAttribute("mediaDeAlumnosPorClase", estadisticasService.mediaDeAlumnosPorClase());
+        model.addAttribute("alumnosConMasIncidencias", estadisticasService.alumnosConMasIncidencias());
         return "estadisticas";
     }
 }

@@ -44,6 +44,18 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="alumno" class="form-label">Alumno Relacionado</label>
+                        <select id="alumno" th:field="*{alumno.id}" class="form-select" required>
+                            <option value="">Seleccionar alumno</option>
+                            <option th:each="alumno : ${alumnos}" 
+                                    th:value="${alumno.id}"
+                                    th:text="${alumno.nombreAlumno + ' ' + alumno.apellidoAlumno}"
+                                    th:selected="${incidencia.alumno != null && incidencia.alumno.id == alumno.id}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
                         <textarea id="descripcion" th:field="*{descripcion}" class="form-control" rows="4"
                             required></textarea>

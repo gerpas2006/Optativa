@@ -70,9 +70,9 @@ public class ProfesoresService {
         int anioInc = profesor.getFechaIncorporacion().getYear();
         int diferencia = anioActual - anioInc;
         if (diferencia>aniosTrabajados) {
-            return (profesor.getSueldo()*porcentaje)/100;
+            return (profesor.getSueldo()*porcentaje)/100; 
         }else {
-            return 0.0;
+            return 0.0; 
         }
     }
 

@@ -28,7 +28,7 @@ public class Incidencias {
 
     private String gravedad;
 
-    private Boolean resuelta;
+    private boolean resuelta;
 
     private String observacionesResolucion;
 }

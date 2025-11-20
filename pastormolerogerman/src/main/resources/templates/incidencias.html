@@ -53,6 +53,40 @@
                     </div>
                 </div>
 
+                <!-- Estadística de incidencias resueltas -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Media de Incidencias Resueltas</h6>
+                                        <h4 class="mb-0"
+                                            th:text="${mediaResueltas != null ? #numbers.formatDecimal(mediaResueltas, 1, 0) + '%' : 'N/A'}">
+                                        </h4>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-x-circle-fill text-danger fs-3 me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Incidencias No Resueltas</h6>
+                                        <h4 class="mb-0"
+                                            th:text="${mediaNoResueltas != null ? #numbers.formatDecimal(mediaNoResueltas, 1, 0) + '%' : 'N/A'}">
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <!-- Lista de incidencias -->
                 <div class="card">
                     <div class="card-body">
@@ -60,7 +94,8 @@
                             <div class="d-flex justify-content-between">
                                 <div class="flex-grow-1">
                                     <div class="mb-2">
-                                        <i th:if="${incidencia.resuelta}" class="bi bi-check-circle-fill text-success"></i>
+                                        <i th:if="${incidencia.resuelta}"
+                                            class="bi bi-check-circle-fill text-success"></i>
                                         <i th:if="${!incidencia.resuelta && incidencia.observacionesResolucion != null}"
                                             class="bi bi-clock text-warning"></i>
                                         <i th:if="${!incidencia.resuelta && incidencia.observacionesResolucion == null}"
@@ -81,13 +116,14 @@
                                     </div>
 
                                     <p th:if="${incidencia.observacionesResolucion != null}"
-                                        class="text-muted small mb-0"
-                                        th:text="${incidencia.observacionesResolucion}"></p>
+                                        class="text-muted small mb-0" th:text="${incidencia.observacionesResolucion}">
+                                    </p>
                                 </div>
 
                                 <div class="ms-3 text-end">
                                     <span th:if="${incidencia.resuelta}" class="badge bg-dark">Resuelta</span>
-                                    <span th:if="${!incidencia.resuelta}" class="badge bg-light text-dark">Pendiente</span>
+                                    <span th:if="${!incidencia.resuelta}"
+                                        class="badge bg-light text-dark">Pendiente</span>
                                     <div class="mt-2">
                                         <a th:href="@{/incidencias/editar/{id}(id=${incidencia.id})}"
                                             class="btn btn-sm btn-warning">

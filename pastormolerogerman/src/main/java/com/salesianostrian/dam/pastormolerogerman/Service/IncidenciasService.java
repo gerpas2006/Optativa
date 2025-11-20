@@ -1,6 +1,7 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
 import java.util.List;
+import java.util.stream.Collector;
 
 import org.springframework.stereotype.Service;
 
@@ -47,5 +48,25 @@ public class IncidenciasService {
 
     public Incidencias buscarPorId(Long id){
         return incidenciasRepository.findById(id).orElse(null);
+    }
+
+    public double mediaDeInicdenciasResueltas() {
+        List<Incidencias> todas = devolverTodasLasIncidencias();
+        double resueltas =0;
+        if(todas.isEmpty()) {
+            return 0.0;
+        }
+        resueltas = todas.stream().filter(i -> i.isResuelta()).count();
+        return (resueltas / todas.size()) * 100;
+    }
+
+    public double porcentajeDeIncidenciasNoResueltas() {
+        List<Incidencias> todas = devolverTodasLasIncidencias();
+        double noResueltas = 0;
+        if(todas.isEmpty()) {
+            return 0.0;
+        }
+        noResueltas = todas.stream().filter(i -> !i.isResuelta()).count();
+        return (noResueltas / (double) todas.size()) * 100.0;
     }
 }

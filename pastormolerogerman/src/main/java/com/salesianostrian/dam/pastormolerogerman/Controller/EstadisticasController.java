@@ -22,6 +22,8 @@ public class EstadisticasController {
         model.addAttribute("profesorMasGrande", estadisticasService.profesorMasGrande());
         model.addAttribute("profesorMasChico", estadisticasService.profesorMasPequeno());
         model.addAttribute("alumnoMasChico", estadisticasService.alumnoMasPequeno());
+        model.addAttribute("profesoresQueMasCobran", estadisticasService.profesoresQueMasCobran());
+        model.addAttribute("mediaDeAlumnosPorClase", estadisticasService.mediaDeAlumnosPorClase());
         return "estadisticas";
     }
 }

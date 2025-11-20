@@ -19,43 +19,49 @@ public class IncidenciasController {
     private final IncidenciasService incidenciasService;
 
     @GetMapping("/incidencias")
-    public String listarIncidencias(Model model){
+    public String listarIncidencias(Model model) {
         model.addAttribute("incidencias", incidenciasService.devolverTodasLasIncidencias());
+        model.addAttribute("mediaResueltas", incidenciasService.mediaDeInicdenciasResueltas());
+        model.addAttribute("mediaNoResueltas", incidenciasService.porcentajeDeIncidenciasNoResueltas());
         return "incidencias";
     }
 
     @GetMapping("/incidencia/filtrar/resueltas")
-    public String mostrarResueltas(Model model){
+    public String mostrarResueltas(Model model) {
         model.addAttribute("incidencias", incidenciasService.devolverLasResueltas());
+        model.addAttribute("mediaResueltas", incidenciasService.mediaDeInicdenciasResueltas());
+        model.addAttribute("mediaNoResueltas", incidenciasService.porcentajeDeIncidenciasNoResueltas());
         return "incidencias";
     }
 
     @GetMapping("/incidencia/filtrar/noresueltas")
-    public String mostrarNoResueltas(Model model){
+    public String mostrarNoResueltas(Model model) {
         model.addAttribute("incidencias", incidenciasService.devolverLasNoResueltas());
+        model.addAttribute("mediaResueltas", incidenciasService.mediaDeInicdenciasResueltas());
+        model.addAttribute("mediaNoResueltas", incidenciasService.porcentajeDeIncidenciasNoResueltas());
         return "incidencias";
     }
 
-        @GetMapping("/incidencias/agregar")
-    public String agregarIncidencia(Model model){
+    @GetMapping("/incidencias/agregar")
+    public String agregarIncidencia(Model model) {
         model.addAttribute("incidencia", new Incidencias());
         return "formularioIncidencia";
     }
 
     @PostMapping("/incidencias/agregar")
-    public String agregarIncidencia(@ModelAttribute Incidencias incidencias){
+    public String agregarIncidencia(@ModelAttribute Incidencias incidencias) {
         incidenciasService.agregarIncidencia(incidencias);
         return "redirect:/incidencias";
     }
 
     @GetMapping("/incidencias/editar/{id}")
-    public String editarIncidencia(@PathVariable Long id,Model model){
+    public String editarIncidencia(@PathVariable Long id, Model model) {
         model.addAttribute("incidencia", incidenciasService.buscarPorId(id));
         return "formularioIncidencia";
     }
 
     @PostMapping("/incidencias/editar")
-    public String editarIncidencia(@ModelAttribute Incidencias incidencias){
+    public String editarIncidencia(@ModelAttribute Incidencias incidencias) {
         incidenciasService.editarIncidencia(incidencias);
         return "redirect:/incidencias";
     }

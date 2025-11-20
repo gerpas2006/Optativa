@@ -1,6 +1,7 @@
 package com.salesianostrian.dam.pastormolerogerman.Service;
 
 import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
+import com.salesianostrian.dam.pastormolerogerman.Model.Clases;
 import com.salesianostrian.dam.pastormolerogerman.Model.Profesores;
 import com.salesianostrian.dam.pastormolerogerman.Repository.IProfesoresRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class EstadisticasService {
 
     private final ProfesoresService profesoresService;
     private final AlumnosService alumnosService;
+    private final ClasesService clasesService;
 
 
     public double gastoMedioDeSueldos(){
@@ -83,6 +85,19 @@ public class EstadisticasService {
         return listarProfesores.stream()
                 .filter(p -> p.getFechaNacimiento().equals(fechaMasChica))
                 .collect(Collectors.toList());
+    }
+
+    public List<Profesores> profesoresQueMasCobran(){
+        List<Profesores> profesores = profesoresService.listarProfesores();
+
+        return profesores.stream().sorted(Comparator.comparing(Profesores::getSueldo)).limit(5).toList().reversed();
+    }
+
+    public double mediaDeAlumnosPorClase(){
+        List<Clases> clases = clasesService.listarClases();
+        double suma = 0;
+        suma = clases.stream().mapToDouble(c -> c.getListaAlumnos().size()).sum();
+        return suma/clases.size();
     }
 
 

@@ -27,7 +27,7 @@
                     <h1 class="text-center mb-4">Estadísticas</h1>
 
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Sueldo Más Alto</h5>
@@ -36,7 +36,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Sueldo Más Bajo</h5>
@@ -45,11 +45,20 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Media de Sueldos</h5>
                                     <p class="card-text fs-4" th:text="${mediaDeSueldos}"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Media Alumnos/Clase</h5>
+                                    <p class="card-text fs-4" th:text="${mediaDeAlumnosPorClase != null ? #numbers.formatDecimal(mediaDeAlumnosPorClase, 1, 0) : 'N/A'}"></p>
                                 </div>
                             </div>
                         </div>
@@ -113,6 +122,36 @@
                                             <span
                                                 th:text="${alumnoChico.nombreAlumno + ' ' + alumnoChico.apellidoAlumno}"></span>
                                         </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-12 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>5 Profesores que Más Cobran</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Apellido</th>
+                                                    <th>Sueldo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="profesor : ${profesoresQueMasCobran}">
+                                                    <td th:text="${profesor.nombreProfesor}"></td>
+                                                    <td th:text="${profesor.apellidoProfesor}"></td>
+                                                    <td th:text="${profesor.sueldo}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

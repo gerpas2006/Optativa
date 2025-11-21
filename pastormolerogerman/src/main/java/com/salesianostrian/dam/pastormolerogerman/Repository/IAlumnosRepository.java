@@ -12,5 +12,6 @@ public interface IAlumnosRepository extends JpaRepository<Alumnos,Long> {
     public Alumnos findByDniContainingIgnoreCase(String dni);
 
 
+    boolean existsByDni(String dni);
 
 }

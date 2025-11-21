@@ -3,6 +3,7 @@ package com.salesianostrian.dam.pastormolerogerman.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.salesianostrian.dam.pastormolerogerman.error.ProfesorErrorArgumentException;
 import org.springframework.stereotype.Service;
 
 import com.salesianostrian.dam.pastormolerogerman.Model.Profesores;
@@ -51,14 +52,17 @@ public class ProfesoresService {
     }
 
     public void agregarProfesor(Profesores profesores){
+        if(profesoresRepository.existsByDni(profesores.getDni()))
+            throw new ProfesorErrorArgumentException("Ya existe un profesor con ese dni");
         profesoresRepository.save(profesores);
     }
 
     public void editarProfesor(Profesores profesores){
+        if(profesoresRepository.existsByDniAndIdNot(profesores.getDni(),profesores.getId())) throw new ProfesorErrorArgumentException("Error al editar");
         profesoresRepository.save(profesores);
     }
 
-    public Profesores buscarPorDni(String dni){
+    public List<Profesores> buscarPorDni(String dni){
         return profesoresRepository.findByDniContainingIgnoreCase(dni);
     }
 

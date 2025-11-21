@@ -14,4 +14,6 @@ public interface IAlumnosRepository extends JpaRepository<Alumnos,Long> {
 
     boolean existsByDni(String dni);
 
+    boolean existsByDniAndIdNot(String dni, Long id);
+
 }

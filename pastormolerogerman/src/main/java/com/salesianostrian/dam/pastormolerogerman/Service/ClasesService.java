@@ -2,6 +2,7 @@ package com.salesianostrian.dam.pastormolerogerman.Service;
 
 import java.util.List;
 
+import com.salesianostrian.dam.pastormolerogerman.error.ClasesErrorArgumentException;
 import org.springframework.stereotype.Service;
 
 import com.salesianostrian.dam.pastormolerogerman.Model.Alumnos;
@@ -52,6 +53,8 @@ public class ClasesService {
     }
 
     public void agregarClase(Clases clases){
+        if (clasesRepository.existsByNombreClase(clases.getNombreClase()))
+            throw new ClasesErrorArgumentException("No puede a ver dos clases con el mismo nombre");
         clasesRepository.save(clases);
     }
 
@@ -59,15 +62,18 @@ public class ClasesService {
         Clases claseExistente = clasesRepository.findById(clases.getId()).orElseThrow(
             () -> new EntityNotFoundException("No se ha encontrado la clase")
         );
-        
+
         claseExistente.setNombreClase(clases.getNombreClase());
+
+        if (clasesRepository.existsByNombreClaseAndIdNot(claseExistente.getNombreClase(),claseExistente.getId()))
+            throw new ClasesErrorArgumentException("Error al editar");
+
 
         if(clases.getProfesores() != null){
             Profesores profesor = iProfesoresRepository.findById(clases.getProfesores().getId()).orElse(null);
                 if(claseExistente.getProfesores() != null){
                     claseExistente.getProfesores().setClases(null);
                 }
-                // Asignar el nuevo profesor
                 claseExistente.setProfesores(profesor);
                 profesor.setClases(claseExistente);
             }

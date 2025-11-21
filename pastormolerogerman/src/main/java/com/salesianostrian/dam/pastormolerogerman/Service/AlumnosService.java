@@ -34,16 +34,14 @@ public class AlumnosService {
     }
 
     public void agregarAlumno(Alumnos alumnos){
-
-
-
+        if(alumnosRepository.existsByDni(alumnos.getDni()))
+            throw new AlumnoErrorArgumentException("Error al crear el alumno");
         alumnosRepository.save(alumnos);
     }
 
     public void editarAlumno(Alumnos alumnos){
-
-        if(alumnosRepository.existsByDni(alumnos.getDni())) throw new AlumnoErrorArgumentException("Error al editar el alumno");
-
+        if(alumnosRepository.existsByDniAndIdNot(alumnos.getDni(),alumnos.getId()))
+            throw new AlumnoErrorArgumentException("Error al editar el alumno");
         alumnosRepository.save(alumnos);
     }
 

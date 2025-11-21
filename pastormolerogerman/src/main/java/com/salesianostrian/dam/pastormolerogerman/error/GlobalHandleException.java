@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class GlobalHandleException extends ResponseEntityExceptionHandler {
+public class GlobalHandleException {
 
     @ExceptionHandler(AlumnoErrorArgumentException.class)
     public String handleArgumentAlumno(AlumnoErrorArgumentException ex, Model model){
@@ -15,6 +15,18 @@ public class GlobalHandleException extends ResponseEntityExceptionHandler {
         model.addAttribute("mensaje",ex.getMessage());
         return "paginaError";
 
+    }
+
+    @ExceptionHandler(ProfesorErrorArgumentException.class)
+    public String handArgumentProfesor(ProfesorErrorArgumentException ex,Model model){
+        model.addAttribute("mensaje", ex.getMessage());
+        return "paginaError";
+    }
+
+    @ExceptionHandler(ClasesErrorArgumentException.class)
+    public String handArgumentProfesor(ClasesErrorArgumentException ex,Model model){
+        model.addAttribute("mensaje", ex.getMessage());
+        return "paginaError";
     }
 
 

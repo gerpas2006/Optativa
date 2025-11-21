@@ -12,4 +12,8 @@ public interface IClasesRepository extends JpaRepository<Clases,Long> {
 
     public List<Clases> findByNombreClaseContainingIgnoreCase(String nombreClase);
 
+    boolean existsByNombreClase(String nombreClase);
+
+    boolean existsByNombreClaseAndIdNot(String nombreClase, Long id);
+
 }

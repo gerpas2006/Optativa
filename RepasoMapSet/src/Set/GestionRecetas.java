@@ -53,6 +53,7 @@ public class GestionRecetas {
         recetaEncontrada.setNombreReceta(recetas.getNombreReceta());
         recetaEncontrada.setNumeroIngredientes(recetas.getNumeroIngredientes());
         recetaEncontrada.setTiempoPreparacion(recetas.getTiempoPreparacion());
+        return recetaEncontrada;
 
     }
 

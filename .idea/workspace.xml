@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da989761-dd18-4339-b542-c214ea5c2e40" name="Changes" comment="" />
+    <list default="true" id="da989761-dd18-4339-b542-c214ea5c2e40" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/RepasoMapSet.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/src/Set/Alumno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/src/Set/GestionAlumno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepasoMapSet/src/Set/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,12 +32,12 @@
     &quot;assignee&quot;: &quot;gerpas2006&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/gerpas2006/Optativa.git",
-    "accountId": "62ae20ec-e250-4e57-8853-e37edb6cc5f3"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/gerpas2006/Optativa.git&quot;,
+    &quot;accountId&quot;: &quot;62ae20ec-e250-4e57-8853-e37edb6cc5f3&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -30,18 +46,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/pastor.moger24_trian/Documents/Optativa",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pastor.moger24_trian/Documents/Optativa&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <module name="OPTATIVA" />

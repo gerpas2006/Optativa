@@ -1,22 +1,27 @@
 package ejercicio01;
 
 public class Alumno {
-
-    private Long id;
+    int id;
     private String nombre;
     private String apellido;
     private String nombreCurso;
     private double notaMedia;
     private int edad;
 
-    public Long getId() {
+    public Alumno(String nombre, String apellido, String nombreCurso, double notaMedia, int edad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nombreCurso = nombreCurso;
+        this.notaMedia = notaMedia;
+        this.edad = edad;
+    }
+
+    public int getId() {
         return id;
     }
-
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
-
     public String getNombre() {
         return nombre;
     }
@@ -54,15 +59,6 @@ public class Alumno {
     }
 
     public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public Alumno(Long id, String nombre, String apellido, String nombreCurso, double notaMedia, int edad) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.nombreCurso = nombreCurso;
-        this.notaMedia = notaMedia;
         this.edad = edad;
     }
 

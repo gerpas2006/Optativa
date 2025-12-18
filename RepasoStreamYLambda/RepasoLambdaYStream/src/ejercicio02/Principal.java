@@ -7,9 +7,12 @@ import java.util.Scanner;
 public class Principal {
     public static void main(String[] args) {
 
-        List<Cadenas> cadenas = new ArrayList<>();
 
-        Crud crud = new Crud(cadenas);
+        List<String> cadenas = new ArrayList<>();
+        cadenas.add("Aedro");
+        cadenas.add("Jose");
+        Crud c = new Crud(cadenas);
+
 
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -22,6 +25,7 @@ public class Principal {
             System.out.println("4. Crear string con iniciales");
             System.out.println("5. Eliminar cadenas con longitud par");
             System.out.println("6. Pasar cadenas a mayúsculas");
+            System.out.println("7 Buscar por pattern");
             System.out.println("0. Salir");
             System.out.print("Ingrese una opción: ");
             opcion = sc.nextInt();
@@ -29,25 +33,28 @@ public class Principal {
 
             switch (opcion) {
                 case 1:
-                    System.out.println(crud.getLista());
+                    c.devolverTodo();
                     break;
                 case 2:
-                    System.out.println(crud.ordenar());
+                    System.out.println(c.ordenar());
                     break;
                 case 3:
                     System.out.print("Ingrese la cadena a buscar: ");
                     String nombre = sc.nextLine();
-                    System.out.println(crud.buscarPorNombre(nombre));
+                    System.out.println(c.buscarPorNombre(nombre));
                     break;
                 case 4:
-                    System.out.println("String con iniciales: " + crud.crearString());
+                    System.out.println("String con iniciales: " + c.crearString());
                     break;
                 case 5:
-                    crud.eliminarLasCadenasImpares();
-                    System.out.println("Cadenas impares eliminadas. Lista actual: " + crud.getLista());
+                    c.eliminarLasCadenasImpares();
+                    System.out.println("Cadenas impares eliminadas. Lista actual: " + cadenas.getLast());
                     break;
                 case 6:
-                    System.out.println("Cadenas en mayúsculas: " + crud.pasarMayusculas());
+                    System.out.println("Cadenas en mayúsculas: " + c.pasarMayusculas());
+                    break;
+                case 7:
+                    System.out.println(c.buscarPorPattern());
                     break;
                 case 0:
                     System.out.println("Saliendo...");

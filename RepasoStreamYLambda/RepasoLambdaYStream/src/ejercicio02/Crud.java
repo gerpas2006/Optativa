@@ -1,21 +1,22 @@
 package ejercicio02;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Crud {
 
-    List<Cadenas> lista;
+    private List<String> lista;
 
-    public Crud(List<Cadenas> lista) {
-        this.lista = lista;
-    }
-
-    public List<Cadenas> getLista() {
+    public List<String> getLista() {
         return lista;
     }
 
-    public void setLista(List<Cadenas> lista) {
+    public void setLista(List<String> lista) {
+        this.lista = lista;
+    }
+
+    public Crud(List<String> lista) {
         this.lista = lista;
     }
 
@@ -26,25 +27,35 @@ public class Crud {
                 '}';
     }
 
-    public List<Cadenas> ordenar(){
+    public void devolverTodo(){
+        lista.stream().forEach(a -> {
+            System.out.println(a);
+        });
+    }
+    public List<String> ordenar(){
         return lista.stream().sorted().toList();
     }
 
-    public List<Cadenas> buscarPorNombre(String nombre){
-        return lista.stream().filter(a -> a.getCadena().equalsIgnoreCase(nombre)).toList();
+    public List<String> buscarPorNombre(String nombre){
+        return lista.stream().filter(a -> a.equalsIgnoreCase(nombre)).toList();
     }
 
     public String crearString() {
         return lista.stream()
-                .map(sc -> String.valueOf(sc.getCadena().charAt(0)))
+                .map(sc -> String.valueOf(sc.charAt(0)))
                 .collect(Collectors.joining());
     }
     
     public void eliminarLasCadenasImpares(){
-        lista.removeIf(a -> a.getCadena().length()%2==0);
+        lista.removeIf(a -> a.length()%2==0);
     }
 
     public List<String> pasarMayusculas(){
-        return lista.stream().map(a -> a.getCadena().toUpperCase()).toList();
+        return lista.stream().map(a -> a.toUpperCase()).toList();
+    }
+
+    public List<String> buscarPorPattern(){
+        Pattern patron = Pattern.compile("^[A-C][a-z]*");
+        return lista.stream().filter(l -> patron.matcher(l).matches()).collect(Collectors.toList());
     }
 }

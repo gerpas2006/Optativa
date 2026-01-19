@@ -14,19 +14,20 @@ public class Principal {
         int eleccion = 0;
         System.out.println("Bienvenido a mi programa");
         do {
-            System.out.println("Dale a 0 si quires salir y si no dale a 1");
-            eleccion = Integer.parseInt(sc.nextLine());
-
             try {
+                System.out.println("Dale a 0 si quires salir y si no dale a cualquier otro número");
+                eleccion = Integer.parseInt(sc.nextLine());
                 System.out.println("Dime el primer número");
                 a = Double.parseDouble(sc.nextLine());
                 System.out.println("Dime el segundo número");
                 b = Double.parseDouble(sc.nextLine());
                 System.out.printf("La suma de los dos números es: %.2f", c.sumarNumeros(a, b));
             } catch (CalculoException e) {
-                System.out.println(e.getMessage());
-            } catch (Exception n) {
-                System.out.println("Introduce un número, SOLO NÚMEROS");
+                System.err.println(e.getMessage());
+            } catch (NumberFormatException e) {
+                System.err.println("Introduce un número, SOLO NÚMEROS");
+            } catch (Exception e) {
+                System.err.println("Error");
             }
         }while (eleccion!=0);
     }

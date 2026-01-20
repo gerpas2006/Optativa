@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Principal {
     public static void main(String[] args) {
 
-        int eleccion = 0, numero = 0;
+        int eleccion = -1, numero = 0;
         Long idNuevo = 0L, idBuscar = 0L;
         double dineroEnviar = 0, descuento =0, ingresar = 0;
         Scanner sc = new Scanner(System.in);
@@ -34,83 +34,52 @@ public class Principal {
                     5. Buscar productos por descuento
                     6. Ingresar dinero
                     """);
-            eleccion = Integer.parseInt(sc.nextLine());
             try {
+                eleccion = Integer.parseInt(sc.nextLine());
                 switch (eleccion) {
                     case 0:
                         System.out.println("Saliendo....");
                         break;
                     case 1:
-                        try {
-                            System.out.printf("El número generado es %d", calculos.aleatorio());
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        System.out.printf("El número generado es %d", calculos.aleatorio());
                         break;
                     case 2:
-                        try {
-                            System.out.println("Dime el ID del producto que quieres cambiar");
-                            idBuscar = Long.parseLong(sc.nextLine());
-                            System.out.println("Dime su nuevo ID");
-                            idNuevo = Long.parseLong(sc.nextLine());
-                            calculos.cambiarId(idBuscar, idNuevo);
-                        } catch (NumberFormatException e) {
-                            System.err.println("Los id solo pueden ser número");
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        System.out.println("Dime el ID del producto que quieres cambiar");
+                        idBuscar = Long.parseLong(sc.nextLine());
+                        System.out.println("Dime su nuevo ID");
+                        idNuevo = Long.parseLong(sc.nextLine());
+                        calculos.cambiarId(idBuscar, idNuevo);
                         break;
                     case 3:
-                        try {
-                            System.out.println("Dime un número");
-                            numero = Integer.parseInt(sc.nextLine());
-                            System.out.println(calculos.lanzarNumero(numero));
-                        } catch (NumberFormatException e) {
-                            System.err.println("Solo se pueden introducir números");
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        System.out.println("Dime un número");
+                        numero = Integer.parseInt(sc.nextLine());
+                        System.out.println(calculos.lanzarNumero(numero));
                         break;
                     case 4:
-                        try {
-                            System.out.println("Dime cuánto sinero quieres enviar");
-                            dineroEnviar = Double.parseDouble(sc.nextLine());
-                            calculos.enviarBizum(dineroEnviar);
-                        } catch (NumberFormatException e) {
-                            System.err.println("Solo se puede introducir números");
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        System.out.println("Dime cuánto dinero quieres enviar");
+                        dineroEnviar = Double.parseDouble(sc.nextLine());
+                        calculos.enviarBizum(dineroEnviar);
                         break;
                     case 5:
-                        try {
-                            System.out.println("Dime el descuento");
-                            descuento = Double.parseDouble(sc.nextLine());
-                            System.out.println(calculos.buscarDescuento(descuento));
-                        } catch (NumberFormatException e) {
-                            System.err.println("Para los descuentos solo puedes introducir números");
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        System.out.println("Dime el descuento");
+                        descuento = Double.parseDouble(sc.nextLine());
+                        System.out.println(calculos.buscarDescuento(descuento));
                         break;
                     case 6:
-                        try {
-                            System.out.println("Dime cuánto dinero quieres ingresar");
-                            ingresar = Double.parseDouble(sc.nextLine());
-                            calculos.agregarDinero(ingresar);
-                        } catch (NumberFormatException e) {
-                            System.err.println("Solo se pueden introducir número");
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        System.out.println("Dime cuánto dinero quieres ingresar");
+                        ingresar = Double.parseDouble(sc.nextLine());
+                        calculos.agregarDinero(ingresar);
                         break;
                     default:
                         System.out.println("Introduce un número válido");
                         break;
                 }
-            } catch (NumberFormatException e) {
-                System.err.println("Solo se pueden introducir númeror");
-            } catch (Exception e) {
+            }catch (ErrorException e) {
+                System.err.println(e.getMessage());
+            }
+            catch (NumberFormatException e) {
+                System.err.println("Solo se pueden introducir números");
+            }catch (Exception e) {
                 System.err.println("Error");
             }
         }while (eleccion!=0);

@@ -28,6 +28,7 @@ public class Principal {
                 System.out.println("""
                     0. Salir
                     1. Agregar Coche
+                    2. Listar todos los coches
                     """);
                 eleccion = Integer.parseInt(sc.nextLine());
                 switch (eleccion) {
@@ -43,6 +44,9 @@ public class Principal {
                         matricula = sc.nextLine();
                         Coche c4 = new Coche(id, marcaCoche, matricula);
                         gestion.agregarCoche(c4);
+                        break;
+                    case 2:
+                        System.out.println(gestion.listaCoches);
                         break;
                     default:
                         System.out.println("Elige una opción correcta");

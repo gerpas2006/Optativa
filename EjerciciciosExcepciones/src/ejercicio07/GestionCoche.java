@@ -36,4 +36,8 @@ public class GestionCoche {
         }
         listaCoches.add(coche);
     }
+
+    public List<Coche> listarCoches(){
+        return listaCoches.stream().toList();
+    }
 }

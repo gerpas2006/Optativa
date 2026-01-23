@@ -14,7 +14,7 @@ public class Principal {
         Coche c3 = new Coche(3L,"Ferrari","GHI9123");
 
         int eleccion = -1;
-        Long id = 0L;
+        long id = 0L;
         String marcaCoche,matricula;
         List<Coche> listaCoches = new ArrayList<>();
         listaCoches.add(c);
@@ -24,12 +24,12 @@ public class Principal {
 
         System.out.println("Bienvenido al programa\n");
         do {
-            try {
-                System.out.println("""
+            System.out.println("""
                     0. Salir
                     1. Agregar Coche
                     2. Listar todos los coches
                     """);
+            try {
                 eleccion = Integer.parseInt(sc.nextLine());
                 switch (eleccion) {
                     case 0:

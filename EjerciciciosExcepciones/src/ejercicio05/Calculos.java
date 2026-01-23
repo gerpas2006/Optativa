@@ -77,7 +77,6 @@ public class Calculos {
         if (cantEnviar>cuenta.getSaldo()){
             throw new ErrorException("No puedes enviar esa cantidad de dinero por que no la tienes");
         }
-        System.out.println("Bizum enviado");
     }
 
     public List<Producto> buscarDescuento(double descuento)throws ErrorException{
@@ -93,7 +92,6 @@ public class Calculos {
             throw new ErrorException("No se pueden ingresar número negativos");
         }
         cuenta.setSaldo(ingresar);
-        System.out.println("Dinero ingresado correctamente");
     }
 
 

@@ -1,0 +1,4 @@
+Hola, esta es la primera línea del fichero
+Hola de nuevo, esta es la segunda línea del fichero
+Buenas, esta es la tercera línea del fichero
+Ya terminamos, esta es la cuarta y última fila del fichero

@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da989761-dd18-4339-b542-c214ea5c2e40" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/RepasoMapSet.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/src/Set/Alumno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/src/Set/GestionAlumno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RepasoMapSet/src/Set/Main.java" beforeDir="false" />
-    </list>
+    <list default="true" id="da989761-dd18-4339-b542-c214ea5c2e40" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
